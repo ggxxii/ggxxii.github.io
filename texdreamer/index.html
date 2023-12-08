@@ -143,8 +143,10 @@
 <!-- Dataset. -->
 <section class="hero teaser">
   <h2 class="subtitle has-text-centered">
-    <span class="dnerf">Preview of ATLAS dataset</span>
   <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+    <h2 class="title is-3">ATLAS Dataset Preview </h2>
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
         <source src="./static/videos/ATLAS_preview_morph_lowres.mp4"
@@ -155,10 +157,11 @@
 </section>
 
 
-<div class="wrapper">
   <section class="section intro-section">
-    <div class="column is-full-width">
-      <h2 class="title is-3">TexDreamer Gallery (Text-to-UV)</h2>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+      <h2 class="title is-3">TexDreamer Gallery </h2>
       <div id="carouselExampleIndicators" class="video-container" >
           <div id="results-carousel" class="carousel is-dark results-carousel video-container-inner">
           <div class="video item">
@@ -166,8 +169,7 @@
                   <source src="./static/videos/t2uv_mp4/batman.mp4"
                           type="video/mp4">
               </video>
-              <!-- <img src="/assets/AvatarCLIP/gif_teaser/skinny_ninja_raisingbotharms.gif"> -->
-              <p class="video-caption">
+              <p>
                   <span style="color:#000000">Batman</span>
               </p>
           </div>
@@ -289,32 +291,26 @@
   </section>
 
 <!-- i2uv -->
-<section class="hero is-light is-small">
-  <div class="hero-body" style="background-color: white;">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3">TexDreamer Gallery (Image-to-UV)</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-<!-- 
-        <div class="item" style="margin: 0px; overflow: auto; border:0px; text-align: center;">
-          <img src="./static/images/i2uv_image/6.jpg" style="width:100%; ">
-        </div> -->
-        <div class="video item">
-          <video poster="" id="" autoplay muted loop height="100%">
-              <source src="./static/videos/i2uv_mp4/i2uv.mp4"
-                      type="video/mp4">
+      <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <video id="teaser" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/i2uv_mp4/i2uv.mp4"
+                    type="video/mp4">
           </video>
+          <h2 class="subtitle has-text-centered">
+            <span> TexDreamer (Image-to-UV) </span> results.
+          </h2>
         </div>
-        
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
+
+    
 
 
 <section class="section">
   <div class="container is-max-desktop">
   <!-- <div class="container"> -->
-  
-
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <!-- <div class="column is-four-fifths"> -->
@@ -347,39 +343,38 @@
       </div>
     </div>
 	
-	<!-- Method. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <br />
-        <h2 class="title is-3">Method</h2>
-          <img src="./static/images/method.png" alt="method" style="width:70%; ">
+    <!-- Method. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <br />
+          <h2 class="title is-3">Method</h2>
+            <img src="./static/images/method.png" alt="method" style="width:50%; ">
+            <div class="content has-text-justified">
+              <p>
+                We divide TexDreamer training into two stages: T2UV (green) and I2UV (blue). For
+                T2UV, we use LDM denoise loss L1 to optimize the text encoder
+                and U-Net. For I2UV, we build a feature translator ϕi2t to map the
+                input image feature encoded by ϕi−enc to a conditional feature
+                fi2t for T2UV. We train I2UV by optimizing ϕt−enc and ϕi−enc.
+              </p>
 
-          <div class="content has-text-justified">
-            <p>
-              Structure of our proposed TexDreamer. We divide its
-              training into two stages: T2UV (green) and I2UV (blue). For
-              T2UV, we use LDM denoise loss L1 to optimize the text encoder
-              and U-Net. For I2UV, we build a feature translator ϕi2t to map the
-              input image feature encoded by ϕi−enc to a conditional feature
-              fi2t for T2UV. We train I2UV by optimizing ϕt−enc and ϕi−enc.
-            </p>
-
-      </div>
+        </div>
     </div>
+  </section>
 
 
 
-<!-- <section class="section" id="BibTeX">
+<section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{wang2022nerf,
-  title={NeRF-Art: Text-Driven Neural Radiance Fields Stylization},
-  author={Wang, Can and Jiang, Ruixiang and Chai, Menglei and He, Mingming and Chen, Dongdong and Liao, Jing},
-  journal={arXiv preprint arXiv:2212.08070},
-  year={2022}
-}</code></pre>
+    <pre><code>@article{,
+  title={TexDreamer: Towards Zero-Shot High-Fidelity 3D Human Texture Generation},
+  author={},
+  journal={},
+  year={2023}}
+</code></pre>
   </div>
-</section> -->
+</section>
 
 
 <footer class="footer">
