@@ -6,6 +6,8 @@
         content="TexDreamer: Towards Zero-Shot High-Fidelity 3D Human Texture Generation">
   <meta name="keywords" content="FDNeRF, NeRF">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
   <title>TexDreamer: Towards Zero-Shot High-Fidelity 3D Human Texture Generation</title>
 
   <script>
@@ -65,7 +67,7 @@
             <span class="author-block">
               <a href="">Chengjie Wang</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="">Dongjin Huang</a><sup>2*</sup>,</span>
+              <a> Dongjin Huang</a><sup>2*</sup>,</span>
           </div>
 
           <div class="is-size-5 publication-authors">
@@ -146,149 +148,215 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-    <h2 class="title is-3">ATLAS Dataset Preview </h2>
+    <h2 class="title is-3">ATLAS Dataset</h2>
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/ATLAS_preview_morph_lowres.mp4"
+        <source src="./static/videos/atlas_preview_lowres.mp4"
                 type="video/mp4">
       </video>
     </div>
   </div>
 </section>
 
+<section class="hero teaser">
+  <h2 class="subtitle has-text-centered">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+    <h2 class="title is-3">TexDreamer</h2>
+    <h2 class="subtitle has-text-centered">
+      <span class="dnerf">TexDreamer</span> is the first zero-shot multimodal human texture generation method that supports both text and image inputs.
+    </h2>
+    </div>
+  </div>
+</section>
 
-  <section class="section intro-section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-full-width">
-      <h2 class="title is-3">TexDreamer Gallery </h2>
-      <div id="carouselExampleIndicators" class="video-container" >
-          <div id="results-carousel" class="carousel is-dark results-carousel video-container-inner">
-          <div class="video item">
+<!-- t2uv -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+            <div class="content has-text-centered">
               <video poster="" id="" autoplay muted loop height="100%">
-                  <source src="./static/videos/t2uv_mp4/batman.mp4"
-                          type="video/mp4">
-              </video>
-              <p>
-                  <span style="color:#000000">Batman</span>
-              </p>
-          </div>
-
-          <div class="video item">
-            <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/batman.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Batman</span>
+            </p>
+        </div>
+    </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
                 <source src="./static/videos/t2uv_mp4/darth vader.mp4"
                         type="video/mp4">
             </video>
-            <!-- <img src="/assets/AvatarCLIP/gif_teaser/skinny_ninja_raisingbotharms.gif"> -->
             <p class="video-caption">
                 <span style="color:#000000">Darth Vader</span>
             </p>
-          </div>
-
-          <div class="video item">
-            <video poster="" id="" autoplay muted loop height="100%">
+        </div>
+    </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
                 <source src="./static/videos/t2uv_mp4/joe biden.mp4"
                         type="video/mp4">
             </video>
             <p class="video-caption">
                 <span style="color:#000000">Joe Biden</span>
             </p>
-          </div>
-
-          <div class="video item">
-            <video poster="" id="" autoplay muted loop height="100%">
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
                 <source src="./static/videos/t2uv_mp4/Napoleon Bonaparte.mp4"
                         type="video/mp4">
             </video>
             <p class="video-caption">
                 <span style="color:#000000">Napoleon Bonaparte</span>
             </p>
-          </div>
-
-          <div class="video item">
-            <video poster="" id="" autoplay muted loop height="100%">
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
                 <source src="./static/videos/t2uv_mp4/Cate Blanchett as Lady Tremaine in Cinderella.mp4"
                         type="video/mp4">
             </video>
             <p class="video-caption">
                 <span style="color:#000000">Cate Blanchett as Lady Tremaine in Cinderella</span>
             </p>
-          </div>
-
-          <div class="video item">
-            <video poster="" id="" autoplay muted loop height="100%">
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
                 <source src="./static/videos/t2uv_mp4/woman, sheer mesh top, black pants, brown hair, middle-aged, cat-eye glasses.mp4"
                         type="video/mp4">
             </video>
             <p class="video-caption">
                 <span style="color:#000000">Woman, sheer mesh top, black pants, brown hair, middle-aged, cat-eye glasses</span>
             </p>
-          </div>
-
-          <div class="video item">
-            <video poster="" id="" autoplay muted loop height="100%">
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
                 <source src="./static/videos/t2uv_mp4/Link in The Legend of Zelda.mp4"
                         type="video/mp4">
             </video>
             <p class="video-caption">
                 <span style="color:#000000">Link in The Legend of Zelda</span>
             </p>
-          </div>
-
-          <div class="video item">
-            <video poster="" id="" autoplay muted loop height="100%">
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
                 <source src="./static/videos/t2uv_mp4/Commodus.mp4"
                         type="video/mp4">
             </video>
             <p class="video-caption">
                 <span style="color:#000000">Commodus</span>
             </p>
-          </div>
-
-          <div class="video item">
-            <video poster="" id="" autoplay muted loop height="100%">
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
                 <source src="./static/videos/t2uv_mp4/spiderman.mp4"
                         type="video/mp4">
             </video>
             <p class="video-caption">
                 <span style="color:#000000">Spiderman</span>
             </p>
-          </div>
-
-        <div class="video item">
-          <video poster="" id="" autoplay muted loop height="100%">
-              <source src="./static/videos/t2uv_mp4/Bill Gates, blue shirt, glasses.mp4"
-                      type="video/mp4">
-          </video>
-          <p class="video-caption">
-              <span style="color:#000000">Bill Gates, blue shirt, glasses</span>
-          </p>
         </div>
-
-        <div class="video item">
-          <video poster="" id="" autoplay muted loop height="100%">
-              <source src="./static/videos/t2uv_mp4/Pennywise from movie IT.mp4"
-                      type="video/mp4">
-          </video>
-          <p class="video-caption">
-              <span style="color:#000000">Pennywise from movie IT</span>
-          </p>
         </div>
-
-        <div class="video item">
-          <video poster="" id="" autoplay muted loop height="100%">
-              <source src="./static/videos/t2uv_mp4/geralt of rivia.mp4"
-                      type="video/mp4">
-          </video>
-          <p class="video-caption">
-              <span style="color:#000000">Geralt of Rivia from "The Witcher"</span>
-          </p>
+        <div class="item item-demo10">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/Bill Gates, blue shirt, glasses.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Bill Gates, blue shirt, glasses</span>
+            </p>
         </div>
-
-
+        </div>
+        <div class="item item-demo11">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/Pennywise from movie IT.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Pennywise from movie IT</span>
+            </p>
+        </div>
+        </div>
+        <div class="item item-demo12">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/geralt of rivia.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Geralt of Rivia from "The Witcher"</span>
+            </p>
+        </div>
+        </div>
+        <div class="item item-demo13">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/Isaac Newton, black suit, medium-length white hair.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Isaac Newton, black suit, medium-length white hair</span>
+            </p>
+        </div>
+        </div>
+        <div class="item item-demo14">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/thor.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Thor from Marvel Comics</span>
+            </p>
+        </div>
+        </div>
+        <div class="item item-demo15">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/Freddie Mercury.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Freddie Mercury</span>
+            </p>
+        </div>
         </div>
       </div>
-  </section>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <h2 class="subtitle has-text-centered">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+    <h2 class="subtitle has-text-centered">
+      TexDreamer generate from text.
+    </h2>
+    </div>
+  </div>
+</section>
 
 <!-- i2uv -->
       <section class="hero teaser">
@@ -299,7 +367,7 @@
                     type="video/mp4">
           </video>
           <h2 class="subtitle has-text-centered">
-            <span> TexDreamer (Image-to-UV) </span> results.
+            <span> TexDreamer generate from image.
           </h2>
         </div>
       </div>
