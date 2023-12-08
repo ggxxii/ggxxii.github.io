@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="TexDreamer: Towards Zero-Shot High-Fidelity 3D Human Texture Generation">
+  <meta name="keywords" content="FDNeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TexDreamer: Towards Zero-Shot High-Fidelity 3D Human Texture Generation</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/cityu.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">TexDreamer: Towards Zero-Shot High-Fidelity 3D Human Texture Generation</h1>
+          <!-- <h1 class="title is-3">TVCG 2023</h1> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://ggxxii.github.io/">Yufei Liu</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="">Junwei Zhu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://junshutang.github.io/">Junshu Tang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Shijie Zhang</a><sup>1,3</sup>,</span>
+			      <span class="author-block">
+              <a href="">Jiangning Zhang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Weijian Cao</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Chengjie Wang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Dongjin Huang</a><sup>2*</sup>,</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Tencent Youtu Lab,</span>
+            <span class="author-block"><sup>2</sup>Shanghai University,</span>
+            <span class="author-block"><sup>3</sup>Fudan University,</span>
+			      <span class="author-block"><sup>*</sup>Corresponding Author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ggxxii/TexDreamer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser. -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">ATLAS</span> is so far the first and largest high-resolution (1024 × 1024) 3D human texture
+        dataset paired with textual descriptions, 3D animation sequences, and composite rendering videos. 
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- Dataset. -->
+<section class="hero teaser">
+  <h2 class="subtitle has-text-centered">
+    <span class="dnerf">Preview of ATLAS dataset</span>
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/ATLAS_preview_morph_lowres.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+
+<div class="wrapper">
+  <section class="section intro-section">
+    <div class="column is-full-width">
+      <h2 class="title is-3">TexDreamer Gallery (Text-to-UV)</h2>
+      <div id="carouselExampleIndicators" class="video-container" >
+          <div id="results-carousel" class="carousel is-dark results-carousel video-container-inner">
+          <div class="video item">
+              <video poster="" id="" autoplay muted loop height="100%">
+                  <source src="./static/videos/t2uv_mp4/batman.mp4"
+                          type="video/mp4">
+              </video>
+              <!-- <img src="/assets/AvatarCLIP/gif_teaser/skinny_ninja_raisingbotharms.gif"> -->
+              <p class="video-caption">
+                  <span style="color:#000000">Batman</span>
+              </p>
+          </div>
+
+          <div class="video item">
+            <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/darth vader.mp4"
+                        type="video/mp4">
+            </video>
+            <!-- <img src="/assets/AvatarCLIP/gif_teaser/skinny_ninja_raisingbotharms.gif"> -->
+            <p class="video-caption">
+                <span style="color:#000000">Darth Vader</span>
+            </p>
+          </div>
+
+          <div class="video item">
+            <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/joe biden.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Joe Biden</span>
+            </p>
+          </div>
+
+          <div class="video item">
+            <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/Napoleon Bonaparte.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Napoleon Bonaparte</span>
+            </p>
+          </div>
+
+          <div class="video item">
+            <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/Cate Blanchett as Lady Tremaine in Cinderella.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Cate Blanchett as Lady Tremaine in Cinderella</span>
+            </p>
+          </div>
+
+          <div class="video item">
+            <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/woman, sheer mesh top, black pants, brown hair, middle-aged, cat-eye glasses.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Woman, sheer mesh top, black pants, brown hair, middle-aged, cat-eye glasses</span>
+            </p>
+          </div>
+
+          <div class="video item">
+            <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/Link in The Legend of Zelda.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Link in The Legend of Zelda</span>
+            </p>
+          </div>
+
+          <div class="video item">
+            <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/Commodus.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Commodus</span>
+            </p>
+          </div>
+
+          <div class="video item">
+            <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/t2uv_mp4/spiderman.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">Spiderman</span>
+            </p>
+          </div>
+
+        <div class="video item">
+          <video poster="" id="" autoplay muted loop height="100%">
+              <source src="./static/videos/t2uv_mp4/Bill Gates, blue shirt, glasses.mp4"
+                      type="video/mp4">
+          </video>
+          <p class="video-caption">
+              <span style="color:#000000">Bill Gates, blue shirt, glasses</span>
+          </p>
+        </div>
+
+        <div class="video item">
+          <video poster="" id="" autoplay muted loop height="100%">
+              <source src="./static/videos/t2uv_mp4/Pennywise from movie IT.mp4"
+                      type="video/mp4">
+          </video>
+          <p class="video-caption">
+              <span style="color:#000000">Pennywise from movie IT</span>
+          </p>
+        </div>
+
+        <div class="video item">
+          <video poster="" id="" autoplay muted loop height="100%">
+              <source src="./static/videos/t2uv_mp4/geralt of rivia.mp4"
+                      type="video/mp4">
+          </video>
+          <p class="video-caption">
+              <span style="color:#000000">Geralt of Rivia from "The Witcher"</span>
+          </p>
+        </div>
+
+
+        </div>
+      </div>
+  </section>
+
+<!-- i2uv -->
+<section class="hero is-light is-small">
+  <div class="hero-body" style="background-color: white;">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">TexDreamer Gallery (Image-to-UV)</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+<!-- 
+        <div class="item" style="margin: 0px; overflow: auto; border:0px; text-align: center;">
+          <img src="./static/images/i2uv_image/6.jpg" style="width:100%; ">
+        </div> -->
+        <div class="video item">
+          <video poster="" id="" autoplay muted loop height="100%">
+              <source src="./static/videos/i2uv_mp4/i2uv.mp4"
+                      type="video/mp4">
+          </video>
+        </div>
+        
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+  <!-- <div class="container"> -->
+  
+
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column is-full-width">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          Texturing 3D humans has been a long-standing research area in human reconstruction and generation. However, acquiring high-quality human texture is a challenging and time-consuming task, resulting in a scarcity of such data in existing datasets. Recent methods have made attempts to incorporate large generative models into 3D human texture generation tasks, showing promising advancements. Nevertheless, current approaches still face challenges including slow generation speeds, limited text consistency, and subpar texture quality. In this paper, we introduce ATLAS (ArTicuLated humAn textureS), which is the first and largest high-resolution (1024x1024) 3D human texture dataset. It comprises 1,100 high-fidelity human textures, each accompanied by text descriptions, animation sequences, and composite rendering videos. Furthermore, we introduce TexDreamer, the first zero-shot multimodal high-fidelity 3D human texture generation model. By incorporating an efficient texture adaptation finetuning strategy and a novel feature translator module, our trained model is capable of generating high-fidelity 3D human textures from user prompts or images in seconds. We will make our dataset available for research purposes.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipeline. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br />
+        <h2 class="title is-3">Pipeline</h2>
+          <img src="./static/images/pipeline.png" alt="method" style="width:100%; ">
+        <div class="content has-text-justified">
+          <p>
+            Pipeline for building our ATLAS dataset. Our pipeline mainly includes three processes, efficient texture adaption finetuning,
+            diverse texture generation, and composite rendering. We obtain 91 high-quality sample textures with multi-view texture projection. Sample
+            textures and prompts are used to train T2UV in TexDreamer. Then we infer T2UV to generate high-fidelity human textures that closely
+            resemble 1,110 prompts generated by ChatGPT. The final composite rendering frame is rendered with background image and textured
+            animation sequence using HDR lighting, PBR material, and perspective camera. Orange stars indicate the included elements in our dataset
+          </p>
+        </div>
+
+      </div>
+    </div>
+	
+	<!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br />
+        <h2 class="title is-3">Method</h2>
+          <img src="./static/images/method.png" alt="method" style="width:70%; ">
+
+          <div class="content has-text-justified">
+            <p>
+              Structure of our proposed TexDreamer. We divide its
+              training into two stages: T2UV (green) and I2UV (blue). For
+              T2UV, we use LDM denoise loss L1 to optimize the text encoder
+              and U-Net. For I2UV, we build a feature translator ϕi2t to map the
+              input image feature encoded by ϕi−enc to a conditional feature
+              fi2t for T2UV. We train I2UV by optimizing ϕt−enc and ϕi−enc.
+            </p>
+
+      </div>
+    </div>
+
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{wang2022nerf,
+  title={NeRF-Art: Text-Driven Neural Radiance Fields Stylization},
+  author={Wang, Can and Jiang, Ruixiang and Chai, Menglei and He, Mingming and Chen, Dongdong and Liao, Jing},
+  journal={arXiv preprint arXiv:2212.08070},
+  year={2022}
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+
+    <div class="content has-text-centered">
+      <a class="icon-link"
+        href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" 
+        href="https://github.com/FDNeRF/FDNeRF" 
+        class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+
+            The <a href="https://github.com/nerfies/nerfies.github.io">source code</a> for the website 
+            was taken from Nerfies. We appreciate the authors sharing the templates with us.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
