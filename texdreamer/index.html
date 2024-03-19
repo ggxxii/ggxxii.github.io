@@ -422,10 +422,9 @@
               input image feature encoded by ϕ_i−enc to a conditional feature
               f_i2t for T2UV. We train I2UV by optimizing ϕ_t−enc and ϕ_i−enc.
             </p>
-
+          </div>
       </div>
   </div>
-</section>
 
 
     <!-- Pipeline. -->
@@ -433,21 +432,21 @@
       <div class="column is-full-width">
         <br />
         <h2 class="title is-3">Pipeline</h2>
-          <img src="./static/images/pipeline.png" alt="method" style="width:100%; ">
-        <div class="content has-text-justified">
-          <p>
-            Pipeline for generating synthetic data. (a) Sample texture acquisition. We
-            first use a differentiable render to optimize UV from multi-view images, then further
-            refine them by projection painting. Acquired sample textures with prompts are used to
-            train T2UV in TexDreamer. (b) Diverse textured human synthesis. With the help
-            of ChatGPT, we utilize T2UV to generate 50k human textures. Human images are
-            rendered with animation sequence, background image, HDR lighting, and perspective
-            camera. Orange stars indicate included data in our ATLAS dataset.
-          </p>
+          <img src="./static/images/pipeline.png" alt="pipeline" style="width:100%; ">
+          <div class="content has-text-justified">
+            <p>
+              Pipeline for generating synthetic data. (a) Sample texture acquisition. We 
+              first use a differentiable render to optimize UV from multi-view images, then further
+              refine them by projection painting. Acquired sample textures with prompts are used to
+              train T2UV in TexDreamer. (b) Diverse textured human synthesis. With the help
+              of ChatGPT, we utilize T2UV to generate 50k human textures. Human images are
+              rendered with animation sequence, background image, HDR lighting, and perspective
+              camera. Orange stars indicate included data in our ATLAS dataset.
+            </p>
         </div>
-
       </div>
     </div>
+</section>
 
 
 
