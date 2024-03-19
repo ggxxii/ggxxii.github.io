@@ -67,6 +67,8 @@
             <span class="author-block">
               <a href="">Chengjie Wang</a><sup>2</sup>,</span>
             <span class="author-block">
+                <a href="">Yunsheng Wu</a><sup>2</sup>,</span>
+            <span class="author-block">
               <a> Dongjin Huang</a><sup>1*</sup>,</span>
           </div>
 
@@ -141,15 +143,14 @@
                 type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">ATLAS</span> is so far the first and largest high-resolution (1024 × 1024) 3D human texture
-        dataset paired with textual descriptions, 3D animation sequences, and composite rendering videos. 
+        <span class="dnerf">ATLAS</span> is so far the largest high-resolution (1024×1024) 3D human texture dataset. 
       </h2>
     </div>
   </div>
 </section>
 
 <!-- Dataset. -->
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <h2 class="subtitle has-text-centered">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -162,7 +163,7 @@
       </video>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="hero teaser">
   <h2 class="subtitle has-text-centered">
@@ -392,23 +393,40 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-          Texturing 3D humans has been a long-standing research area in human reconstruction and generation. 
-          However, acquiring high-quality human texture is a challenging and time-consuming task, 
-          resulting in a scarcity of such data in existing datasets. Recent methods have made attempts to incorporate 
-          large generative models into 3D human texture generation tasks, showing promising advancements. 
-          Nevertheless, current approaches still face challenges including slow generation speeds, limited 
-          text consistency, and subpar texture quality. In this paper, we introduce ATLAS (ArTicuLated humAn textureS), 
-          which is the first and largest high-resolution (1024x1024) 3D human texture dataset. 
-          It comprises 1,100 high-fidelity human textures, each accompanied by text descriptions, 
-          animation sequences, and composite rendering videos. Furthermore, we introduce TexDreamer, 
-          the first zero-shot multimodal high-fidelity 3D human texture generation model. 
-          By incorporating an efficient texture adaptation finetuning strategy and a novel feature translator module, 
-          our trained model is capable of generating high-fidelity 3D human textures from user prompts or images in seconds. 
-          We will make our dataset available for research purposes.
+            Texturing 3D humans with semantic UV maps remains a challenge due to the difficulty of acquiring reasonably unfolded UV.
+            Despite recent text-to-3D advancements in supervising multi-view renderings using large text-to-image (T2I) models, issues persist with generation speed, text consistency, and texture quality, resulting in data
+            scarcity among existing datasets. We present TexDreamer, the first
+            zero-shot multimodal high-fidelity 3D human texture generation model.
+            Utilizing an efficient texture adaptation finetuning strategy, we adapt
+            large T2I model to a semantic UV structure while preserving its original generalization capability. Leveraging a novel feature translator module, the trained model is capable of generating high-fidelity 3D human
+            textures from either text or image within seconds. Furthermore, we
+            introduce ArTicuLated humAn textureS (ATLAS), the largest highresolution (1024×1024) 3D human texture dataset which contains 50k
+            high-fidelity textures with text descriptions. Our dataset and model will
+            be public for research purposes.
           </p>
         </div>
       </div>
     </div>
+
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br />
+        <h2 class="title is-3">Method</h2>
+          <img src="./static/images/method.png" alt="method" style="width:90%; ">
+          <div class="content has-text-justified">
+            <p>
+              We divide TexDreamer training into two stages: T2UV (green) and I2UV (blue). For
+              T2UV, we use LDM denoise loss L1 to optimize the text encoder
+              and U-Net. For I2UV, we build a feature translator ϕ_i2t to map the
+              input image feature encoded by ϕ_i−enc to a conditional feature
+              f_i2t for T2UV. We train I2UV by optimizing ϕ_t−enc and ϕ_i−enc.
+            </p>
+
+      </div>
+  </div>
+</section>
+
 
     <!-- Pipeline. -->
     <div class="columns is-centered has-text-centered">
@@ -418,35 +436,18 @@
           <img src="./static/images/pipeline.png" alt="method" style="width:100%; ">
         <div class="content has-text-justified">
           <p>
-            Pipeline for building our ATLAS dataset. Our pipeline mainly includes three processes, efficient texture adaption finetuning,
-            diverse texture generation, and composite rendering. We obtain 91 high-quality sample textures with multi-view texture projection. Sample
-            textures and prompts are used to train T2UV in TexDreamer. Then we infer T2UV to generate high-fidelity human textures that closely
-            resemble 1,110 prompts generated by ChatGPT. The final composite rendering frame is rendered with background image and textured
-            animation sequence using HDR lighting, PBR material, and perspective camera. Orange stars indicate the included elements in our ATLAS dataset.
+            Pipeline for generating synthetic data. (a) Sample texture acquisition. We
+            first use a differentiable render to optimize UV from multi-view images, then further
+            refine them by projection painting. Acquired sample textures with prompts are used to
+            train T2UV in TexDreamer. (b) Diverse textured human synthesis. With the help
+            of ChatGPT, we utilize T2UV to generate 50k human textures. Human images are
+            rendered with animation sequence, background image, HDR lighting, and perspective
+            camera. Orange stars indicate included data in our ATLAS dataset.
           </p>
         </div>
 
       </div>
     </div>
-	
-    <!-- Method. -->
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-full-width">
-          <br />
-          <h2 class="title is-3">Method</h2>
-            <img src="./static/images/method.png" alt="method" style="width:50%; ">
-            <div class="content has-text-justified">
-              <p>
-                We divide TexDreamer training into two stages: T2UV (green) and I2UV (blue). For
-                T2UV, we use LDM denoise loss L1 to optimize the text encoder
-                and U-Net. For I2UV, we build a feature translator ϕ_i2t to map the
-                input image feature encoded by ϕ_i−enc to a conditional feature
-                f_i2t for T2UV. We train I2UV by optimizing ϕ_t−enc and ϕ_i−enc.
-              </p>
-
-        </div>
-    </div>
-  </section>
 
 
 
