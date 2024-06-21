@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ClotheDreamer: Text-Guided Garment Generation with 3D Gaussians">
+  <meta name="keywords" content="FDNeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>ClotheDreamer: Text-Guided Garment Generation with 3D Gaussians</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/cityu.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">ClotheDreamer: Text-Guided Garment Generation with 3D Gaussians</h1>
+          <!-- <h1 class="title is-3">TVCG 2023</h1> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/ggxxii">Yufei Liu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://junshutang.github.io/">Junshu Tang</a><sup>2</sup>,</span>
+            <span class="author-block">
+              Zheng Chu<sup>1</sup>,</span>
+            <span class="author-block">
+              Shijie Zhang<sup>3</sup>,</span>
+            <span class="author-block">
+              Jinkun Hao<sup>2</sup>,</span>
+            <span class="author-block">
+              Junwei Zhu<sup>4</sup>,</span>
+            <span class="author-block">
+              Dongjin Huang<sup>1*</sup>,</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Shanghai University,</span>
+            <span class="author-block"><sup>2</sup>Shanghai Jiao Tong University,</span>
+            <span class="author-block"><sup>3</sup>Fudan University,</span>
+            <span class="author-block"><sup>4</sup>Tencent Youtu Lab,</span>
+			      <span class="author-block"><sup>*</sup>Corresponding Author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2403.12906"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.12906"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ggxxii/clothedreamer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              <!-- <span class="link-block">
+                <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                  <span>Dataset (coming soon)</span>
+                  </a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Dataset. -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+    <h2 class="title is-3">Overview</h2>
+    <div class="hero-body">
+        <img src="./static/images/overview.png" alt="method" style="width:100%; ">
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser. -->
+<section class="hero teaser">
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <h2 class="title is-4">ClotheDreamer can generate high-fidelity wearable 3D garment assets from texts.</h2>
+    </div>
+    <!-- <h2 class="subtitle has-text-centered">
+      <span class="dnerf">ClotheDreamer</span> is so far the largest high-resolution (1024×1024) 3D human texture dataset. 
+    </h2> -->
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <h2 class="subtitle has-text-centered">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+    <h2 class="title is-3">Garment Gallery</h2>
+    <!-- <h2 class="subtitle has-text-centered">
+      <span class="dnerf">TexDreamer</span> is the first zero-shot high-fidelity 3D human texture generation model that supports both text and image inputs. -->
+    </h2>
+    </div>
+  </div>
+</section>
+
+<!-- t2uv -->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/belted.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a belted floral-print linen mini dress</span>
+            </p>
+        </div>
+      </div>
+      <div class="item">
+          <div class="content has-text-centered">
+            <video poster="" id="" autoplay muted loop height="100%">
+              <source src="./static/videos/lace.mp4"
+                      type="video/mp4">
+          </video>
+          <p class="video-caption">
+              <span style="color:#000000">a white lace-up bodysuit and distressed boyfriend jeans</span>
+          </p>
+      </div>
+    </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/strip.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a black and white striped long sleeve shirt and dark denim jeans</span>
+            </p>
+        </div>
+    </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/red.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a strapless ruffled plissé-chiffon tomato red gown</span>
+            </p>
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/v-neck.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a white V-neck T-shirt and high-waisted plaid trousers</span>
+            </p>
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/tied.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a green tie-dye sweatshirt and matching jogger pants</span>
+            </p>
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/floral.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a floral-print short sleeve button-up shirt and white drawstring shorts</span>
+            </p>
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/windbreaker.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a color-blocked windbreaker jacket and black jogger pants</span>
+            </p>
+        </div>
+        </div>
+        <div class="item">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/greenpolo.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a green polo shirt and white linen pants</span>
+            </p>
+        </div>
+        </div>
+        <div class="item item-demo10">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/white-blouse.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a white button-down shirt and black high-waisted trousers</span>
+            </p>
+        </div>
+        </div>
+        <div class="item item-demo11">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/cutout.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a cutout floral-print satin-crepe mini dress</span>
+            </p>
+        </div>
+        </div>
+        <div class="item item-demo12">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/orange-stripe.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a striped long sleeve shirt and light wash mom jeans</span>
+            </p>
+        </div>
+        </div>
+        <div class="item item-demo13">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/white-sweater.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a white oversized sweatshirt and athletic leggings</span>
+            </p>
+        </div>
+        </div>
+        <div class="item item-demo14">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/red-plaid.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">a man wearing a red plaid shirt and black skinny jeans</span>
+            </p>
+        </div>
+        </div>
+        <div class="item item-demo15">
+            <div class="content has-text-centered">
+              <video poster="" id="" autoplay muted loop height="100%">
+                <source src="./static/videos/overzised.mp4"
+                        type="video/mp4">
+            </video>
+            <p class="video-caption">
+                <span style="color:#000000">an oversized beige sweater, a chunky neck, and slim-fit trousers</span>
+            </p>
+        </div>
+        </div>
+      <div class="item item-demo16">
+          <div class="content has-text-centered">
+            <video poster="" id="" autoplay muted loop height="100%">
+              <source src="./static/videos/yellow.mp4"
+                      type="video/mp4">
+          </video>
+          <p class="video-caption">
+              <span style="color:#000000">a white slip and a yellow leather skirt</span>
+          </p>
+      </div>
+    </div>
+    <div class="item item-demo17">
+        <div class="content has-text-centered">
+          <video poster="" id="" autoplay muted loop height="100%">
+            <source src="./static/videos/grey.mp4"
+                    type="video/mp4">
+        </video>
+        <p class="video-caption">
+            <span style="color:#000000">a black crew neck sweatshirt and grey jogger pants</span>
+        </p>
+    </div>
+    </div>
+      <div class="item item-demo18">
+        <div class="content has-text-centered">
+          <video poster="" id="" autoplay muted loop height="100%">
+            <source src="./static/videos/velvet.mp4"
+                    type="video/mp4">
+        </video>
+        <p class="video-caption">
+            <span style="color:#000000">a green velvet wrap dress with a knee-length hem</span>
+        </p>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <h2 class="subtitle has-text-centered">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+    <h2 class="subtitle has-text-centered">
+      With Disentangled Clothe Gaussian Splatting (DCGS) representation, we effectively decouple garments from the human body.
+    </h2>
+    </div>
+  </div>
+</section>
+
+<!-- i2uv -->
+      <!-- <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <video id="teaser" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/i2uv mp4/i2uv.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            <span> Additionally, leveraging a novel feature translator, TexDreamer can also generate realistic human textures from 2D images.
+          </h2>
+        </div>
+      </div>
+    </section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+  <!-- <div class="container"> -->
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <!-- <div class="column is-four-fifths"> -->
+      <div class="column is-full-width">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            High-fidelity 3D garment synthesis from text is desirable yet challenging for digital 
+            avatar creation. Recent diffusion-based approaches via Score Distillation Sampling (SDS) 
+            have enabled new possibilities but either intricately couple with human body or struggle 
+            to reuse. We introduce ClotheDreamer, a 3D Gaussian-based method for generating wearable, 
+            production-ready 3D garment assets from text prompts. We propose a novel representation 
+            Disentangled Clothe Gaussian Splatting (DCGS) to enable separate optimization. 
+            DCGS represents clothed avatar as one gaussian model but freezes body Gaussian splats. 
+            To enhance quality and completeness, we incorporate bidirectional SDS to supervise 
+            clothed avatar and garment RGBD renderings respectively with pose conditions and propose 
+            a new pruning strategy for loose clothing. Our approach can also support custom clothing 
+            templates as input. Benefiting from our design, the synthetic 3D garment can be easily 
+            applied to virtual try-on and support physically accurate animation. 
+            Extensive experiments showcase our superior and competitive performance.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br />
+        <h2 class="title is-3">Method</h2>
+          <img src="./static/images/method.png" alt="method" style="width:100%; ">
+          <div class="content has-text-justified">
+            <p>
+              Given a text description, we first leverage ChatGPT to determine clothing ID types for initialization. 
+              Our Disentangled Clothe Gaussian Splatting (DCGS) represents clothed avatar as One-Gaussian model but 
+              freezes body Gaussian splats to achieve separate supervision. With parsed Gaussian Splatting (GS) render, 
+              we use Bidreactional SDS to guide clothing and body RGBD renderings separately with pose condition. 
+              We also support template mesh input for versatile personalized 3D garment generation.
+            </p>
+          </div>
+      </div>
+  </div>
+
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      <!-- @misc{liu2024texdreamer,
+      title={TexDreamer: Towards Zero-Shot High-Fidelity 3D Human Texture Generation}, 
+      author={Yufei Liu and Junwei Zhu and Junshu Tang and Shijie Zhang and Jiangning Zhang and Weijian Cao and Chengjie Wang and Yunsheng Wu and Dongjin Huang},
+      year={2024},
+      eprint={2403.12906},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}} -->
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+
+    <div class="content has-text-centered">
+      <a class="icon-link"
+        href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" 
+        href="https://github.com/FDNeRF/FDNeRF" 
+        class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+
+            The <a href="https://github.com/nerfies/nerfies.github.io">source code</a> for the website 
+            was taken from Nerfies. We appreciate the authors sharing the templates with us.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
