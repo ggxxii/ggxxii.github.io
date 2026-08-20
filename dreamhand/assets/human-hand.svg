@@ -1,0 +1,28 @@
+<svg width="760" height="640" viewBox="0 0 760 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skin" x1="116" y1="582" x2="520" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E89486"/>
+      <stop offset="0.48" stop-color="#F3B2A2"/>
+      <stop offset="1" stop-color="#FFD7C9"/>
+    </linearGradient>
+    <linearGradient id="light" x1="225" y1="516" x2="474" y2="112" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF1E9" stop-opacity="0"/>
+      <stop offset="1" stop-color="#FFF9F2" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#356C70" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path d="M31 640C58 575 104 516 171 463C218 426 247 391 245 342L235 195C233 174 247 158 266 158C285 158 298 172 300 192L307 287L321 112C323 90 339 76 359 78C378 80 389 96 388 117L381 278L412 92C416 70 434 57 454 61C473 65 482 82 478 104L443 290L489 139C496 117 516 106 535 113C554 120 561 139 554 160L501 330L581 252C599 235 623 236 639 252C655 268 653 292 636 309L534 416C510 441 489 471 478 506L436 640H31Z" fill="url(#skin)"/>
+    <path d="M171 463C225 420 252 382 249 334L239 197C237 181 246 169 259 166C273 163 285 173 287 190L298 328C300 351 310 363 324 365C341 367 353 354 355 331L363 116C364 103 373 94 384 94C397 95 404 106 402 120L386 338C384 365 398 381 417 380C434 379 443 366 448 344L482 112C485 98 496 90 508 93C520 96 526 108 522 122L473 362C468 387 482 403 500 405C517 407 530 397 540 379L593 273C601 257 617 252 629 260" stroke="url(#light)" stroke-width="16" stroke-linecap="round" opacity="0.68"/>
+    <path d="M72 608C155 550 230 518 321 517C393 516 441 494 487 444" stroke="#CC786E" stroke-opacity="0.26" stroke-width="4" stroke-linecap="round"/>
+    <path d="M96 583C188 534 274 523 356 534" stroke="#FFF4EC" stroke-opacity="0.46" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g opacity="0.75">
+    <circle cx="266" cy="158" r="5" fill="#FFF8F2"/>
+    <circle cx="359" cy="78" r="5" fill="#FFF8F2"/>
+    <circle cx="454" cy="61" r="5" fill="#FFF8F2"/>
+    <circle cx="535" cy="113" r="5" fill="#FFF8F2"/>
+  </g>
+</svg>

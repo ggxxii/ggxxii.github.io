@@ -1,0 +1,83 @@
+<svg width="610" height="660" viewBox="180 -10 610 660" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shell" x1="208" y1="585" x2="571" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6382B0"/>
+      <stop offset="0.5" stop-color="#A0B5D5"/>
+      <stop offset="1" stop-color="#E9EFF7"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="284" y1="544" x2="505" y2="301" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5886CA"/>
+      <stop offset="1" stop-color="#80A1D2"/>
+    </linearGradient>
+    <linearGradient id="joint" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F4F8FE"/>
+      <stop offset="1" stop-color="#BACBE5"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%">
+      <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#273E60" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)" stroke-linejoin="round">
+    <!-- Wrist interface -->
+    <path d="M276 520L478 515L523 640H217L276 520Z" fill="#4D6890" stroke="#29456F" stroke-width="7"/>
+    <path d="M285 538L468 534L489 590L251 594L285 538Z" fill="#CFDBED" stroke="#314F7C" stroke-width="6"/>
+    <path d="M269 572H480" stroke="#749CD7" stroke-width="8" stroke-linecap="round"/>
+    <path d="M296 614H458" stroke="#C0D3F0" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Angular palm chassis -->
+    <path d="M230 287L486 281L570 370L532 510L416 565L285 531L205 432L230 287Z" fill="url(#shell)" stroke="#2C4A77" stroke-width="8"/>
+    <path d="M263 325L456 314L519 381L490 477L405 520L310 494L252 421L263 325Z" fill="#EBF0F8" stroke="#3D5984" stroke-width="6"/>
+    <path d="M284 349L431 337L481 392L460 449L390 486L323 466L278 410L284 349Z" fill="url(#edge)" opacity="0.92"/>
+
+    <!-- Palm actuator -->
+    <path d="M334 369L412 353L459 399L438 457L373 472L324 431L334 369Z" fill="#F7FAFF" stroke="#294570" stroke-width="7"/>
+    <circle cx="391" cy="412" r="34" fill="#304C75"/>
+    <circle cx="391" cy="412" r="20" fill="url(#joint)" stroke="#7793BD" stroke-width="5"/>
+    <circle cx="391" cy="412" r="7" fill="#5886CA"/>
+    <path d="M317 474L356 447M441 369L479 348M283 384L240 366M454 474L493 493" stroke="#DAE8FD" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+
+    <!-- Index finger: three separated phalanges -->
+    <path d="M238 288L232 213L284 207L296 285L238 288Z" fill="url(#shell)" stroke="#2C4A77" stroke-width="7"/>
+    <circle cx="264" cy="211" r="16" fill="url(#joint)" stroke="#2C4A77" stroke-width="6"/>
+    <path d="M230 188L224 106L274 102L283 184L230 188Z" fill="#B8CAE4" stroke="#2C4A77" stroke-width="7"/>
+    <circle cx="252" cy="105" r="14" fill="url(#joint)" stroke="#2C4A77" stroke-width="6"/>
+    <path d="M224 84L223 35C223 19 236 7 252 8C268 9 279 22 278 38L275 80L224 84Z" fill="#DEE7F4" stroke="#2C4A77" stroke-width="7"/>
+
+    <!-- Middle finger -->
+    <path d="M320 285L319 191L376 190L381 286L320 285Z" fill="url(#shell)" stroke="#2C4A77" stroke-width="7"/>
+    <circle cx="348" cy="191" r="17" fill="url(#joint)" stroke="#2C4A77" stroke-width="6"/>
+    <path d="M318 166L319 73L374 73L376 165L318 166Z" fill="#C1D1E8" stroke="#2C4A77" stroke-width="7"/>
+    <circle cx="347" cy="73" r="15" fill="url(#joint)" stroke="#2C4A77" stroke-width="6"/>
+    <path d="M320 51L322 23C323 7 336 -4 351 -3C367 -2 378 11 377 27L374 51L320 51Z" fill="#E7EDF7" stroke="#2C4A77" stroke-width="7"/>
+
+    <!-- Ring finger -->
+    <path d="M401 287L410 209L464 215L458 293L401 287Z" fill="url(#shell)" stroke="#2C4A77" stroke-width="7"/>
+    <circle cx="438" cy="211" r="16" fill="url(#joint)" stroke="#2C4A77" stroke-width="6"/>
+    <path d="M413 185L423 108L474 114L464 191L413 185Z" fill="#BACBE4" stroke="#2C4A77" stroke-width="7"/>
+    <circle cx="449" cy="110" r="14" fill="url(#joint)" stroke="#2C4A77" stroke-width="6"/>
+    <path d="M426 87L432 51C435 35 449 25 465 28C480 31 489 45 486 61L479 93L426 87Z" fill="#E3EBF6" stroke="#2C4A77" stroke-width="7"/>
+
+    <!-- Little finger -->
+    <path d="M475 304L498 247L547 267L530 329L475 304Z" fill="url(#shell)" stroke="#2C4A77" stroke-width="7"/>
+    <circle cx="522" cy="253" r="15" fill="url(#joint)" stroke="#2C4A77" stroke-width="6"/>
+    <path d="M506 229L532 174L578 196L551 250L506 229Z" fill="#BBCCE5" stroke="#2C4A77" stroke-width="7"/>
+    <circle cx="555" cy="180" r="13" fill="url(#joint)" stroke="#2C4A77" stroke-width="6"/>
+    <path d="M544 158L558 132C566 117 584 112 598 121C612 130 616 148 607 162L593 184L544 158Z" fill="#E3EBF6" stroke="#2C4A77" stroke-width="7"/>
+
+    <!-- Articulated thumb -->
+    <path d="M520 351L575 316L608 361L553 401L520 351Z" fill="url(#shell)" stroke="#2C4A77" stroke-width="7"/>
+    <circle cx="580" cy="337" r="16" fill="url(#joint)" stroke="#2C4A77" stroke-width="6"/>
+    <path d="M605 345L660 302L692 343L635 389L605 345Z" fill="#BBCCE5" stroke="#2C4A77" stroke-width="7"/>
+    <circle cx="669" cy="319" r="14" fill="url(#joint)" stroke="#2C4A77" stroke-width="6"/>
+    <path d="M686 327L718 301C731 291 750 293 759 307C768 321 764 339 751 348L714 374L686 327Z" fill="#E3EBF6" stroke="#2C4A77" stroke-width="7"/>
+
+    <!-- Tendon lines and fasteners -->
+    <path d="M264 266L253 127M350 265L348 94M432 271L448 132M501 292L554 205" stroke="#F6F9FE" stroke-width="5" stroke-linecap="round" opacity="0.78"/>
+    <path d="M270 272L258 233M350 269V217M427 274L435 235M498 293L516 271" stroke="#5886CA" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+    <circle cx="250" cy="326" r="7" fill="#F5F9FE" stroke="#2C4A77" stroke-width="4"/>
+    <circle cx="512" cy="373" r="7" fill="#F5F9FE" stroke="#2C4A77" stroke-width="4"/>
+    <circle cx="299" cy="478" r="7" fill="#F5F9FE" stroke="#2C4A77" stroke-width="4"/>
+    <circle cx="477" cy="473" r="7" fill="#F5F9FE" stroke="#2C4A77" stroke-width="4"/>
+  </g>
+</svg>

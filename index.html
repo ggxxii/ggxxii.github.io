@@ -1,128 +1,650 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<!-- saved from url=(0033)http://home.ustc.edu.cn/~canwang/ -->
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" class="gr__cs_toronto_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="shortcut icon" href="http://www.cs.toronto.edu/~rjliao/imgs/myIcon.jpg">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Yufei Liu, Embodied AI, Robot Learning, Egocentric Video, Vision-Language-Action, Hand Motion Reconstruction, Diffusion Models, Shanghai Jiao Tong University">
+  <meta name="description" content="Yufei Liu, Ph.D. student at Shanghai Jiao Tong University, interested in scaling robot learning with human data.">
+  <title>Yufei Liu - Homepage</title>
 
-<meta name="keywords" content="Yufei Liu, CG, Computer Vision, Shanghai Film Academy">
-<meta name="description" content="Yufei Liu&#39;s home page">
-<link rel="stylesheet" href="./Can Wang_files/jemdoc.css" type="text/css">
-<title>Yufei Liu</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png?v=2">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2">
 
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://ggxxii.github.io/">
+  <meta property="og:title" content="Yufei Liu">
+  <meta property="og:description" content="Ph.D. student at SJTU, advised by Prof. Hongsheng Li (MMLab, CUHK). Interested in scaling robot learning with human data.">
+  <meta property="og:image" content="https://ggxxii.github.io/assets/avatar.jpg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Yufei Liu">
+  <meta name="twitter:description" content="Ph.D. student at SJTU, advised by Prof. Hongsheng Li (MMLab, CUHK). Interested in scaling robot learning with human data.">
+  <meta name="twitter:image" content="https://ggxxii.github.io/assets/avatar.jpg">
+  <style>
+    :root {
+      /* ---- 配色令牌：改这一段就能整站换肤 ---- */
+      --surface: #ffffff;
+      --surface-nav: rgba(255, 255, 255, 0.98);
+      --surface-soft: #eef2f7;
+      --text: #494e52;
+      --text-2: #4f565d;
+      --text-3: #555d65;
+      --heading: #24292f;
+      --heading-strong: #222;
+      --site-title: #30363d;
+      --nav-text: #727a82;
+      --nav-text-hover: #4d555d;
+      --nav-line: #bdc1c4;
+      --muted: #6f7780;
+      --label: #7d858d;
+      --faint: #8a929a;
+      --link: #224b8d;
+      --accent: #1f3bb3;
+      --line: #edf0f2;
+      --soft-line: #f4f5f7;
+      --border: #e1e4e8;
+      --avatar-border: #dde3ea;
+      --btn-text: #5d6670;
+      --btn-text-active: #4b535b;
+      --btn-bg: #e9ecef;
+      --btn-bg-hover: #dde1e5;
+      --btn-bg-active: #f1f3f5;
+      --tag: #8e82dc;
+      --tag-soft: #73a2db;
+      --content-width: 960px;
+      --sidebar-width: 260px;
+    }
+
+    * {
+      box-sizing: border-box;
+      letter-spacing: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--surface);
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--surface);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .masthead {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--surface-nav);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .masthead__inner-wrap {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 8px 18px;
+    }
+
+    .greedy-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      min-height: 36px;
+      white-space: nowrap;
+    }
+
+    .site-title {
+      color: var(--site-title);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .visible-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2px 18px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .visible-links a {
+      position: relative;
+      display: block;
+      padding: 8px 0;
+      color: var(--nav-text);
+    }
+
+    .visible-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      height: 3px;
+      background: var(--nav-line);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.18s ease;
+    }
+
+    .visible-links a:hover {
+      color: var(--nav-text-hover);
+      text-decoration: none;
+    }
+
+    .visible-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    #main {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+      display: grid;
+      grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+      gap: 46px;
+    }
+
+    .sidebar {
+      align-self: start;
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .page {
+      grid-column: 2;
+      grid-row: 1;
+      scroll-margin-top: 76px;
+    }
+
+    .sticky {
+      position: sticky;
+      top: 76px;
+    }
+
+    .profile_box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      background: var(--surface);
+    }
+
+    .author__avatar {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: var(--surface-soft);
+      border: 1px solid var(--avatar-border);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .author__avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author__name {
+      margin: 0 0 8px;
+      color: var(--heading-strong);
+      font-size: 1.25rem;
+      text-align: center;
+    }
+
+    .author__bio {
+      margin: 0 0 16px;
+      color: var(--text-3);
+      text-align: center;
+    }
+
+    .author__urls {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .author__urls li {
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      margin: 0 0 9px;
+      color: var(--text-2);
+      word-break: break-word;
+    }
+
+    .author__urls .label {
+      flex: 0 0 64px;
+      color: var(--label);
+      font-size: 0.9em;
+    }
+
+    .page {
+      min-width: 0;
+    }
+
+    .page__content p {
+      margin: 0 0 0.72em;
+    }
+
+    .page__content h2 {
+      margin: 1.55em 0 0.65em;
+      padding-bottom: 0.18em;
+      color: var(--heading);
+      border-bottom: 1px solid var(--soft-line);
+      font-size: 1.45rem;
+      line-height: 1.25;
+      scroll-margin-top: 76px;
+    }
+
+    .page__content h3 {
+      margin: 1.25em 0 0.35em;
+      color: var(--heading);
+      font-size: 1.08rem;
+      line-height: 1.3;
+    }
+
+    .lead-space {
+      height: 0.65em;
+    }
+
+    ul.news-list,
+    ul.clean-list {
+      margin: 0.2em 0 0;
+      padding-left: 1.35em;
+    }
+
+    ul.news-list li,
+    ul.clean-list li {
+      margin-bottom: 0.45em;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .paper-box {
+      padding: 0.5em 0 0.72em;
+    }
+
+    .paper-box-text {
+      max-width: 100%;
+    }
+
+    .paper-title {
+      font-weight: 700;
+    }
+
+    .conference-tag,
+    .report-tag {
+      display: inline-block;
+      margin-right: 7px;
+      padding: 1px 8px;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 0.9em;
+      font-weight: 700;
+      line-height: 1.45;
+      vertical-align: 1px;
+    }
+
+    .conference-tag {
+      background: var(--tag);
+    }
+
+    .report-tag {
+      background: var(--tag-soft);
+    }
+
+    .paper-links {
+      color: var(--muted);
+    }
+
+    .equal-note {
+      color: var(--muted);
+      font-size: 0.9em;
+    }
+
+    .show-figure-btn {
+      margin-left: 7px;
+      padding: 3px 8px;
+      color: var(--btn-text);
+      background: var(--btn-bg);
+      border: 0;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      line-height: 1.3;
+      cursor: pointer;
+    }
+
+    .show-figure-btn:hover {
+      background: var(--btn-bg-hover);
+    }
+
+    .show-figure-btn.active {
+      color: var(--btn-text-active);
+      background: var(--btn-bg-active);
+    }
+
+    .paper-box-image-below {
+      display: none;
+      justify-content: center;
+      width: 100%;
+      margin-top: 1.05em;
+      text-align: center;
+    }
+
+    .paper-box-image-below img {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+      object-fit: contain;
+    }
+
+    .updated {
+      margin-top: 2.5em;
+      padding-top: 1em;
+      border-top: 1px solid var(--soft-line);
+      color: var(--faint);
+      font-size: 0.9em;
+      text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .visible-links a::after {
+        transition: none;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .greedy-nav {
+        align-items: flex-end;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .visible-links {
+        gap: 0 16px;
+        justify-content: flex-end;
+      }
+
+      #main {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding-top: 20px;
+      }
+
+      .sidebar,
+      .page {
+        grid-column: 1;
+      }
+
+      .sidebar {
+        grid-row: 1;
+      }
+
+      .page {
+        grid-row: 2;
+      }
+
+      .sticky {
+        position: static;
+      }
+
+      .profile_box {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr);
+        gap: 0 18px;
+        align-items: center;
+      }
+
+      .author__avatar {
+        width: 112px;
+        height: 112px;
+        grid-row: span 2;
+        margin: 0;
+        font-size: 30px;
+      }
+
+      .author__name,
+      .author__bio {
+        text-align: left;
+      }
+
+      .author__urls {
+        grid-column: 1 / -1;
+        margin-top: 14px;
+      }
+
+    }
+
+    @media (max-width: 560px) {
+      body {
+        font-size: 14px;
+      }
+
+      .masthead__inner-wrap {
+        padding: 8px 14px;
+      }
+
+      #main {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .profile_box {
+        display: block;
+      }
+
+      .author__avatar {
+        width: 126px;
+        height: 126px;
+        margin: 0 auto 14px;
+      }
+
+      .author__name,
+      .author__bio {
+        text-align: center;
+      }
+
+      .visible-links {
+        gap: 0 12px;
+      }
+    }
+  </style>
 </head>
-<body data-gr-c-s-loaded="true" data-new-gr-c-s-check-loaded="14.1006.0" data-gr-ext-installed="">
+<body>
+  <header class="masthead">
+    <div class="masthead__inner-wrap">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        <a class="site-title" href="#about-me" target="_self">Yufei Liu</a>
+        <ul class="visible-links">
+          <li><a href="#about-me" target="_self">About Me</a></li>
+          <li><a href="#news" target="_self">News</a></li>
+          <li><a href="#publications" target="_self">Publications</a></li>
+          <li><a href="#education" target="_self">Education</a></li>
+          <li><a href="#experience" target="_self">Experience</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<div id="layout-content" style="margin-top:25px">
+  <main id="main">
+    <aside class="sidebar sticky">
+      <section class="profile_box" itemscope itemtype="https://schema.org/Person">
+        <div class="author__avatar">
+          <img src="assets/avatar.jpg" alt="Yufei Liu" width="256" height="256" fetchpriority="high" decoding="async">
+        </div>
+        <div class="author__content">
+          <h1 class="author__name" itemprop="name">Yufei Liu</h1>
+          <p class="author__bio">Ph.D. Student at SJTU</p>
+        </div>
+        <ul class="author__urls">
+          <li><span class="label">Affil.</span><span>Shanghai Jiao Tong University</span></li>
+          <li><span class="label">Place</span><span>Shanghai, China</span></li>
+          <li><span class="label">Email</span><a href="mailto:yf.liu@sjtu.edu.cn">yf.liu@sjtu.edu.cn</a></li>
+          <li><span class="label">Scholar</span><a href="https://scholar.google.com/citations?user=1974qvQAAAAJ&amp;hl=en">Google Scholar</a></li>
+          <li><span class="label">GitHub</span><a href="https://github.com/ggxxii/">github.com/ggxxii</a></li>
+        </ul>
+      </section>
+    </aside>
 
-<table>
-	<tbody>
-		<tr>
-			<td width="670">
-				<div id="toptitle">
-					<!-- <h1>Yufei Liu &nbsp; <img src="./Can Wang_files/can_chinese.png" height="45px" style="margin-bottom:-10px"></h1><h1> -->
-                    <h1>Yufei Liu &nbsp <h1>
-                    </h1></div>
+    <article class="page" id="about-me" itemscope itemtype="https://schema.org/CreativeWork">
+      <section class="page__content" itemprop="text">
+        <div class="lead-space"></div>
 
-				<!-- <h3>Phd Candidate</h3> -->
-			  <p>
-					Shanghai Film Academy<br>
-					Shanghai University<br>
-					Shanghai, China <br>
-          <br>
-				<!-- Email:  -->
-				<!-- <br>Blog: <a href="https://blog.csdn.net/cassiePython">https://blog.csdn.net/cassiePython</a> -->
-        
-				<br>Github: <a href="https://github.com/ggxxii/">https://github.com/ggxxii/</a></p>
-        <br>Email: monsantplusone@shu.edu.cn</a></p>
-			</td><td>
-				<!-- <img src="./Can Wang_files/me_pencil.png" border="0" width="200"><br> -->
-			</td>
-		</tr><tr>
-	</tr></tbody>
-</table>
+        <p>
+          I am a Ph.D. student at <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>,
+          advised by Prof. Hongsheng Li at <a href="http://mmlab.ie.cuhk.edu.hk/people.html">MMLab, CUHK</a>.
+          I am also a research intern at ACE Robotics.
+        </p>
 
-<h2>Biography</h2>
-<p>
-  I am currently a second-year graduate student. I am a research intern at Tencent Youtu Lab, worked with 
-	<a href="https://scholar.google.com/citations?user=-OxQlHsAAAAJ&hl=zh-CN">Junwei Zhu</a>, <a href="https://scholar.google.com/citations?user=ad_WbwMAAAAJ&hl=zh-CN">Junshu Tang</a>.
-</p>
+        <p class="highlight">
+          I am currently interested in scaling robot learning with human data &mdash; turning large-scale egocentric
+          human video into usable supervision for manipulation.
+        </p>
 
-<p>I have broad research interests in computer graphics, and vision. Recently I am focusing on Gaussian Splatting and Diffusion Models. </p>
+        <p>
+          Before that, I worked on 3D human and garment generation with diffusion models and Gaussian
+          Splatting during my M.S. at Shanghai University, and was a research intern at Tencent Youtu Lab with
+          <a href="https://scholar.google.com/citations?user=-OxQlHsAAAAJ&amp;hl=zh-CN">Junwei Zhu</a>
+          and
+          <a href="https://scholar.google.com/citations?user=ad_WbwMAAAAJ&amp;hl=zh-CN">Junshu Tang</a>.
+        </p>
 
-<h2>Publications</h2>
-<ul>
-  <li>
-    <a href="https://arxiv.org/abs/2403.12906">TexDreamer: Towards Zero-Shot High-Fidelity 3D Human Texture Generation,<br></a>
-    <b>Yufei Liu</b>, Junwei Zhu, Junshu Tang, Shijie Zhang, Jiangning Zhang, Weijian Cao, Chengjie Wang, Yunsheng Wu, Dongjin Huang<br>
-    <em>European Conference on Computer Vision</em> (<b>ECCV</b>), 2024, <b>Oral</b>. <a href="https://ggxxii.github.io/texdreamer/">[Project Page]</a><br>
-  </li>
-  <li>
-    <a href="https://arxiv.org/abs/2406.16815">ClotheDreamer: Text-Guided Garment Generation with 3D Gaussians,<br></a>
-    <b>Yufei Liu</b>, Junshu Tang, Chu Zheng, Shijie Zhang, Jinkun Hao, Junwei Zhu, Dongjin Huang<br>
-    <em>arxiv</em>, 2024. <a href="https://ggxxii.github.io/clothedreamer/">[Project Page]</a><br>
-  </li>
-	
-  
+        <h2 id="news">News</h2>
+        <ul class="news-list">
+          <li><em>2026.06</em>: Released <a href="https://arxiv.org/abs/2606.30308">ViDiHand</a>, repurposing video diffusion models for egocentric hand motion reconstruction.</li>
+          <li><em>2026.06</em>: Released <a href="https://arxiv.org/abs/2606.17200">ACE-Ego-0</a>, unifying egocentric human and robot data for VLA pretraining.</li>
+          <li><em>2024.06</em>: Released <a href="https://arxiv.org/abs/2406.16815">ClotheDreamer</a>, text-guided garment generation with 3D Gaussians.</li>
+          <li><em>2024.03</em>: <a href="https://arxiv.org/abs/2403.12906">TexDreamer</a> was accepted by ECCV 2024 as an Oral presentation.</li>
+        </ul>
 
+        <h2 id="publications">Publications</h2>
 
-</ul>
+        <h3>Embodied AI and Robot Learning</h3>
 
-<!-- <h2>Employment</h2>
-  <ul>
-    <li>Internship in the Institute of Electrics, Chinese Academy of Sciences, 6/2017-9/2017. </li>
-    <li>Internship in the Students We-Media Alliance, Baidu,  7/2018-10/2018.</li>
-	<li>Internship in the Anhui Heart Voice Medical Technology Limited Company, HeartVoice,  8/2019-8/2020.</li>
-  </ul>
+        <div class="paper-box">
+          <div class="paper-box-text">
+            <span class="report-tag">arXiv 2026</span>
+            <a class="paper-title" href="https://arxiv.org/abs/2606.17200">ACE-Ego-0: Unifying Egocentric Human and Robotic Data for VLA Pretraining</a>.<br>
+            Hao Li*, Ganlong Zhao*, <strong>Yufei Liu</strong>*, Haotian Hou, Guoquan Ye, Tongyan Fang, Chunxiao Liu, Siyuan Huang, Jianbo Liu, Xiaogang Wang, Hongsheng Li.<br>
+            <span class="equal-note">* equal contribution</span><br>
+            <span class="paper-links">[<a href="https://arxiv.org/pdf/2606.17200">PDF</a>] [<a href="https://arxiv.org/abs/2606.17200">arXiv</a>]</span>
+            <button class="show-figure-btn" type="button" onclick="toggleFigure('fig-aceego', this)">Show Figure</button>
+          </div>
+          <div class="paper-box-image-below" id="fig-aceego">
+            <img src="assets/ace_ego0_teaser.png" alt="ACE-Ego-0 teaser" width="1600" height="696" loading="lazy" decoding="async">
+          </div>
+        </div>
 
-<h2>Teaching Assistant</h2>
-  <ul>
-	<li>Advanced Artificial Intelligence (2019 Winter) </li>
-    <li>Introduction to Artificial Intelligence (2019 Spring) </li>
-    <li>Pattern Recognition (2018 Winter) </li>
-    <li>C Language Programming (2018 Winter) </li>
-  </ul>
+        <h3>3D Human</h3>
 
-<h2>Patents</h2>
-  <ul>
-	<li>基于对抗学习的角度鲁棒的个性化人脸表情识别方法，CN111382684A，Shangfei Wang, <b>Can Wang</b><br> </li>
-  </ul> -->
+        <div class="paper-box">
+          <div class="paper-box-text">
+            <span class="report-tag">arXiv 2026</span>
+            <strong>ViDiHand</strong> &mdash; <a class="paper-title" href="https://arxiv.org/abs/2606.30308">The Surprising Effectiveness of Video Diffusion Models for Hand Motion Reconstruction</a>.<br>
+            Yuxi Wang*, Chengkai Jin*, <strong>Yufei Liu</strong>, Wenqi Ouyang, Tianyi Wei, Zhiwei Zeng, Siyuan Huang, Zhiqi Shen, Xingang Pan.<br>
+            <span class="equal-note">* equal contribution</span><br>
+            <span class="paper-links">[<a href="https://arxiv.org/pdf/2606.30308">PDF</a>] [<a href="https://arxiv.org/abs/2606.30308">arXiv</a>] [<a href="https://github.com/NTUYWANG103/ViDiHand">Code</a>] [<a href="https://vidihand.github.io/">Project Page</a>]</span>
+            <button class="show-figure-btn" type="button" onclick="toggleFigure('fig-vidihand', this)">Show Figure</button>
+          </div>
+          <div class="paper-box-image-below" id="fig-vidihand">
+            <img src="assets/vidihand_method.png" alt="ViDiHand method overview" width="1600" height="1355" loading="lazy" decoding="async">
+          </div>
+        </div>
 
+        <div class="paper-box">
+          <div class="paper-box-text">
+            <span class="conference-tag">ECCV 2024 Oral</span>
+            <a class="paper-title" href="https://arxiv.org/abs/2403.12906">TexDreamer: Towards Zero-Shot High-Fidelity 3D Human Texture Generation</a>.<br>
+            <strong>Yufei Liu</strong>, Junwei Zhu, Junshu Tang, Shijie Zhang, Jiangning Zhang, Weijian Cao, Chengjie Wang, Yunsheng Wu, Dongjin Huang.<br>
+            <span class="paper-links">[<a href="https://arxiv.org/pdf/2403.12906">PDF</a>] [<a href="https://arxiv.org/abs/2403.12906">arXiv</a>] [<a href="https://github.com/ggxxii/texdreamer">Code</a>] [<a href="https://ggxxii.github.io/texdreamer/">Project Page</a>]</span>
+            <button class="show-figure-btn" type="button" onclick="toggleFigure('fig-texdreamer', this)">Show Figure</button>
+          </div>
+          <div class="paper-box-image-below" id="fig-texdreamer">
+            <img src="assets/texdreamer_overview.jpg" alt="TexDreamer overview" width="1600" height="784" loading="lazy" decoding="async">
+          </div>
+        </div>
 
-<!-- <h2>Honors &amp; Awards</h2>
-<table style="border-spacing:2px">
+        <div class="paper-box">
+          <div class="paper-box-text">
+            <span class="report-tag">arXiv 2024</span>
+            <a class="paper-title" href="https://arxiv.org/abs/2406.16815">ClotheDreamer: Text-Guided Garment Generation with 3D Gaussians</a>.<br>
+            <strong>Yufei Liu</strong>, Junshu Tang, Chu Zheng, Shijie Zhang, Jinkun Hao, Junwei Zhu, Dongjin Huang.<br>
+            <span class="paper-links">[<a href="https://arxiv.org/pdf/2406.16815">PDF</a>] [<a href="https://arxiv.org/abs/2406.16815">arXiv</a>] [<a href="https://github.com/ggxxii/clothedreamer">Code</a>] [<a href="https://ggxxii.github.io/clothedreamer/">Project Page</a>]</span>
+            <button class="show-figure-btn" type="button" onclick="toggleFigure('fig-clothedreamer', this)">Show Figure</button>
+          </div>
+          <div class="paper-box-image-below" id="fig-clothedreamer">
+            <img src="assets/clothedreamer_method.png" alt="ClotheDreamer method overview" width="1600" height="491" loading="lazy" decoding="async">
+          </div>
+        </div>
 
-    <tbody>
+        <h2 id="education">Education</h2>
+        <ul class="clean-list">
+          <li><em>Current</em>, Ph.D. Student, Shanghai Jiao Tong University.</li>
+          <li><em>Previous</em>, M.S., Shanghai Film Academy, Shanghai University.</li>
+        </ul>
 
-        <tr><td><i>Java Programming Contest of Oracle</i>, the Third Prize, 2015.</td></tr>
+        <h2 id="experience">Experience</h2>
+        <ul class="clean-list">
+          <li><em>Current</em>, Research Intern, ACE Robotics.</li>
+          <li><em>Previous</em>, Research Intern, Tencent Youtu Lab.</li>
+        </ul>
 
-		<tr><td><i>RoboCup International Competition and Symposium</i>, the Second Prize of China, 2015.</td></tr>
+        <p class="updated">Last updated: August 2026</p>
+      </section>
+    </article>
+  </main>
 
-		<tr> <td><i>China Collegiate Programming Contest</i>, the Second Prize of China, 2016.</td></tr>
+  <script>
+    function toggleFigure(figId, button) {
+      var figure = document.getElementById(figId);
+      if (!figure) return;
 
-		<tr> <td><i>Excellent Intern in Chinese Academy of Sciences</i>, 2017.</td></tr>
-
-		<tr> <td><i>The Best Editor Award of Baidu</i>, 2018.</td></tr>
-
-		<tr> <td><i>The second place of 2018 OMG-Empathy Prediction Challenge of IEEE FG conference</i>, <a href="https://www2.informatik.uni-hamburg.de/wtm/omgchallenges/omg_empathy2018_results2018.html#">See more</a>, 2018.</td></tr>
-
-        <tr><td><i>Student Travel Award</i>, ACMMM 2018.</td></tr>
-		<tr><td><i>National Scholarship</i>, 2018.</td></tr>
-		<tr><td><i>National Scholarship</i>, 2019.</td></tr>
-		<tr><td><i>Outstanding graduate in Anhui Province</i>, 2020.</td></tr>
-		<tr><td><i>The fourth place of CVPR 2020 EmotionNet Challenge</i>, 2020.</td></tr>
-	    	<tr><td><i>Research Tuition Scholarship, City University of Hong Kong</i>, 2022.</td></tr>
-	        <tr><td><i>Research Tuition Scholarship, City University of Hong Kong</i>, 2023.</td></tr>
-
-
-	</tbody>
-</table> -->
-
-<!-- <h2>Miscellany</h2>
-<p>Hobbies: Erhu, Basketball, Music.<br>
-I am a member of Nationalities Music Orchestra of USTC.</p> -->
-
-<!-- <p>Last Updated by Can Wang: Aug. 27 2020</p> -->
-<!-- <div id="footer"> -->
-	<!-- <div id="footer-text"></div> -->
-</div>
-</div>
-</body></html>
+      if (figure.style.display === "flex") {
+        figure.style.display = "none";
+        button.textContent = "Show Figure";
+        button.classList.remove("active");
+      } else {
+        figure.style.display = "flex";
+        button.textContent = "Hide Figure";
+        button.classList.add("active");
+      }
+    }
+  </script>
+</body>
+</html>

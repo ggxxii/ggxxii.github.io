@@ -1,0 +1,1418 @@
+/* ============================================================
+   DreamHand project page
+   Blue-pink, light, minimal. Token-driven, no external assets.
+
+   Palette is a pastel pink -> lavender -> blue sky. Surfaces carry the
+   pastels; anything that carries text is deepened until it clears WCAG AA.
+
+   Colour roles
+     blue  -> interface: nav, links, focus rings, and every selected state
+              (scene pills, dataset tabs, retarget thumbs)
+     pink  -> "ours": the headline result numbers, the DreamHand tile,
+              the DreamHand results row, the human-hand art
+     rose->violet->periwinkle gradient carries the wordmark; pink->blue
+     carries the section rules and the compare divider
+   ============================================================ */
+
+:root {
+  /* surfaces */
+  --bg: #fdfaff;
+  --bg-pink: #fdf2f7;
+  --bg-blue: #f1f5fd;
+  --panel: #ffffff;
+  --panel-2: #f8f5fd;
+  --line: #ece6f3;
+  --line-strong: #d8cfe6;
+
+  /* ink: text 16.1:1 on --bg; muted 5.5:1 on --bg, 5.2:1 on both bands */
+  --text: #221a33;
+  --muted: #6b6280;
+
+  /* accents: blue 5.1:1 on --bg and 5.2:1 under white; pink-ink 5.0:1 on
+     --bg and 4.5:1 on --pink-soft. --pink and --lavender are fills only. */
+  --blue: #4f63cf;
+  --blue-deep: #3f4cba;
+  --blue-soft: #e8ebfb;
+  --lavender: #8a52c0;
+  --pink: #f290b8;
+  --pink-ink: #b84077;
+  --pink-soft: #fdeaf3;
+
+  /* channels, for the few places that need an alpha of a token */
+  --bg-rgb: 253 250 255;
+  --blue-rgb: 79 99 207;
+  --pink-rgb: 242 144 184;
+  --lavender-rgb: 185 165 235;
+  --ink-rgb: 34 26 51;
+
+  --header-h: 66px;
+  --radius: 14px;
+  --radius-sm: 10px;
+  /* one measure: header, every section and the footer share these edges.
+     Anything that needs a narrower line length caps itself (prose 780,
+     section heads 720, the figure and demo video 1000). */
+  --shell: 1280px;
+
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Roboto Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p,
+figure {
+  margin: 0;
+}
+
+sup {
+  font-size: 0.62em;
+  vertical-align: super;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ---------- layout primitives ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 76px 0;
+}
+
+.section-alt {
+  background: linear-gradient(115deg, var(--bg-pink) 0%, #faf5fd 48%, var(--bg-blue) 100%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+section[id] {
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.section-head {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.section-head::before {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 3px;
+  margin: 0 auto 20px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--pink));
+}
+
+.section-head h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 18px;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  background: var(--blue);
+  color: #fff;
+  font-weight: 700;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- scroll progress ---------- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 80;
+  height: 3px;
+  pointer-events: none;
+}
+
+.scroll-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--blue), var(--pink));
+}
+
+/* ---------- nav ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgb(var(--bg-rgb) / 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.site-header.is-scrolled {
+  border-bottom-color: var(--line);
+  background: rgb(var(--bg-rgb) / 0.94);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: 13px 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.brand-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--blue));
+}
+
+.brand-copy strong {
+  font-weight: 800;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;
+}
+
+.site-nav a {
+  position: relative;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 550;
+  transition: color 0.18s ease;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+}
+
+.site-nav a.active {
+  color: var(--blue);
+}
+
+.site-nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--blue);
+}
+
+.header-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 15px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--blue);
+  font-size: 0.86rem;
+  font-weight: 700;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.header-link:hover {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 72px 0 64px;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(900px 520px at 6% -12%, rgb(var(--pink-rgb) / 0.22), transparent 64%),
+    radial-gradient(760px 460px at 84% -8%, rgb(var(--lavender-rgb) / 0.16), transparent 62%),
+    radial-gradient(700px 460px at 30% 96%, rgb(var(--pink-rgb) / 0.11), transparent 64%),
+    radial-gradient(880px 560px at 78% 88%, rgb(var(--blue-rgb) / 0.09), transparent 66%),
+    linear-gradient(168deg, #fffbfd 0%, #fdfaff 48%, #f8faff 100%);
+}
+
+.hero-hands {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 0;
+  height: 245px;
+  pointer-events: none;
+  opacity: 0.42;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 70%);
+  mask-image: linear-gradient(to bottom, transparent, #000 70%);
+}
+
+.hero-hands img {
+  position: absolute;
+  bottom: -34px;
+  height: 255px;
+  width: auto;
+  max-width: none;
+}
+
+.hero-hand-human {
+  left: -58px;
+  transform: rotate(-10deg);
+}
+
+.hero-hand-robot {
+  right: -66px;
+  transform: rotate(10deg) scaleX(-1);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 16px;
+  font-size: clamp(2.9rem, 7vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+/* Gradient text needs a real colour first: background-clip:text is dropped by
+   some engines and by forced-colours modes, which would erase the word. */
+.grad {
+  color: var(--blue);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .grad {
+    background: linear-gradient(
+      100deg,
+      var(--pink-ink) 0%,
+      var(--lavender) 50%,
+      var(--blue) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@media (forced-colors: active) {
+  .grad {
+    background: none;
+    color: CanvasText;
+  }
+}
+
+.hero-sub {
+  max-width: 780px;
+  margin: 0 auto 26px;
+  font-size: clamp(1.05rem, 2.1vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.42;
+  letter-spacing: -0.01em;
+}
+
+.hero-authors {
+  max-width: 800px;
+  margin: 0 auto 8px;
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
+/* The global reset makes links look like plain text, so an author homepage
+   needs its own underline to read as clickable. */
+.hero-authors a {
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 3px;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+
+.hero-authors a:hover {
+  color: var(--blue);
+  text-decoration-color: var(--blue);
+}
+
+.hero-affiliations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 22px;
+  margin: 0 auto 6px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.hero-corresponding {
+  margin: 0 auto 22px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.hero-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.hero-logos img {
+  height: 52px;
+  width: auto;
+}
+
+/* Wide wordmarks (ACE) need less height to carry the same optical weight
+   as the square crests next to them. */
+.hero-logos img.logo-wide {
+  height: 34px;
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 44px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--blue-deep);
+}
+
+.btn-ghost {
+  background: var(--panel);
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+.btn-ghost:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* Placeholder until the preprint is posted and the code repo goes public. */
+.btn-disabled {
+  background: var(--panel);
+  border-color: var(--line);
+  color: var(--muted);
+  cursor: default;
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 40px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+
+.hero-stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.hero-stats b {
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--pink-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-stats span {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* ---------- demo video ---------- */
+
+.demo-section {
+  padding: 64px 0 72px;
+}
+
+.video-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.video-card video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--panel-2);
+}
+
+/* ---------- abstract ---------- */
+
+.abstract-copy {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.abstract-copy p {
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.78;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* ---------- method figure ---------- */
+
+.figure {
+  margin: 0;
+}
+
+.figure img {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.figure figcaption {
+  /* same measure as .abstract-copy and .table-note */
+  margin: 16px auto 0;
+  max-width: 780px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.62;
+  text-align: center;
+}
+
+/* ---------- qualitative grid ---------- */
+
+.qualitative-grid-shell {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+/* Row 1 is the dataset badge, row 2 the task pills; both centred. */
+.qualitative-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+/* All four datasets stay listed; the one on screen is the filled chip. */
+.qualitative-dataset-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+}
+
+.qualitative-grid-caption {
+  flex: none;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.qualitative-grid-caption.is-active {
+  background: var(--blue-soft);
+  color: var(--blue-deep);
+}
+
+.qualitative-scene-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+}
+
+/* One pill shared by the scene strip and the dataset tabs. */
+.qualitative-scene,
+.results-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+
+.qualitative-scene:hover,
+.results-tab:hover {
+  border-color: var(--blue);
+  color: var(--text);
+}
+
+.qualitative-scene.active,
+.results-tab.active {
+  background: var(--blue);
+  border-color: transparent;
+  color: #fff;
+}
+
+.qualitative-scene {
+  padding: 6px 13px;
+  font-size: 0.82rem;
+}
+
+.qualitative-scene-index {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.qualitative-scene.active .qualitative-scene-index {
+  color: #fff;
+}
+
+/* 1fr rows so both halves of the 8-method comparison share one tile height */
+.qualitative-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+}
+
+.qualitative-grid-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.qualitative-thumb {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: center;
+}
+
+.qualitative-thumb-label {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+/* The two anchor tiles read the same way as the two anchor table rows:
+   blue is what we are measured against, pink is us. */
+.qualitative-thumb-gt .qualitative-thumb-label {
+  color: var(--blue-deep);
+  font-weight: 800;
+}
+
+.qualitative-thumb-label-ours {
+  color: var(--pink-ink);
+  font-weight: 800;
+}
+
+/* Fixed box: the seven scenes have three different aspects, and letting the
+   clip drive the height made the document grow ~500px on every rotation. */
+.qualitative-thumb-frame {
+  position: relative;
+  flex: none;
+  aspect-ratio: 32 / 46;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--panel-2);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, opacity 0.35s ease;
+}
+
+.qualitative-frame-ours {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px var(--pink-soft);
+}
+
+.qualitative-thumb-video {
+  display: block;
+  width: 100%;
+}
+
+/* Layered scene stack — JS strips [hidden] from all 7 videos per cell, so these
+   two rules are the ONLY thing keeping the inactive scenes out of view. */
+.qualitative-thumb-frame.is-layered .qualitative-thumb-video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.qualitative-thumb-frame.is-layered .qualitative-thumb-video.is-active {
+  z-index: 2;
+  opacity: 1;
+}
+
+/* While the 56 clips settle the tiles hold their first frame; dim them a little
+   so the pause reads as loading rather than as a stall. */
+.qualitative-grid-shell.is-loading .qualitative-thumb-frame {
+  opacity: 0.82;
+}
+
+.qualitative-grid-shell.is-loading .qualitative-thumb-frame.is-layered .qualitative-thumb-video {
+  opacity: 0;
+  transition: none;
+}
+
+.qualitative-grid-shell.is-loading .qualitative-thumb-frame.is-layered .qualitative-thumb-video.is-active {
+  opacity: 1;
+}
+
+/* ---------- retargeting ---------- */
+
+.retarget-layout {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.retarget-rail {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.retarget-rail-title {
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.retarget-thumbrail {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+.retarget-thumb {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--panel-2);
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.retarget-thumb:hover {
+  border-color: var(--line-strong);
+}
+
+.retarget-thumb.active {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue-soft);
+}
+
+.retarget-thumb-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--panel-2);
+}
+
+.retarget-thumb-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 18px 9px 7px;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 22, 48, 0) 0%,
+    rgba(12, 22, 48, 0.62) 38%,
+    rgba(12, 22, 48, 0.92) 100%
+  );
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(12, 22, 48, 0.75);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.retarget-thumb-index {
+  font-family: var(--mono);
+}
+
+.retarget-carousel {
+  min-width: 0;
+}
+
+.retarget-carousel-stage {
+  position: relative;
+}
+
+.retarget-panel[hidden] {
+  display: none;
+}
+
+.retarget-compare {
+  --retarget-split: 50%;
+}
+
+.retarget-stage {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-2);
+  cursor: ew-resize;
+  /* vertical swipes still scroll the page; horizontal ones move the divider */
+  touch-action: pan-y;
+}
+
+.retarget-video,
+.retarget-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.retarget-video {
+  display: block;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.retarget-video-original {
+  background: var(--panel-2);
+  object-position: center bottom;
+}
+
+/* The robot render occupies the RIGHT of the divider, so the on-stage
+   "Original / Retargeted" chips match what is actually under them. */
+.retarget-layer {
+  overflow: hidden;
+  background: var(--panel-2);
+  clip-path: inset(0 0 0 var(--retarget-split));
+  will-change: clip-path;
+}
+
+.retarget-video-robot {
+  background: var(--panel-2);
+  object-position: center center;
+}
+
+.retarget-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--retarget-split);
+  z-index: 3;
+  width: 2px;
+  transform: translateX(-1px);
+  background: linear-gradient(180deg, var(--pink), var(--blue));
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+}
+
+.retarget-divider span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 34px;
+  height: 34px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 10px rgb(var(--ink-rgb) / 0.28);
+}
+
+.retarget-divider span::before,
+.retarget-divider span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  transform: translateY(-50%);
+}
+
+.retarget-divider span::before {
+  left: 9px;
+  border-right: 5px solid var(--pink-ink);
+}
+
+.retarget-divider span::after {
+  right: 9px;
+  border-left: 5px solid var(--blue-deep);
+}
+
+.retarget-chip {
+  position: absolute;
+  bottom: 12px;
+  z-index: 4;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  font-size: 0.72rem;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.retarget-chip-left {
+  left: 12px;
+  color: var(--pink-ink);
+}
+
+.retarget-chip-right {
+  right: 12px;
+  color: var(--blue-deep);
+}
+
+.retarget-play-state {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 2px 14px rgba(12, 22, 48, 0.5);
+  transition: opacity 0.2s ease;
+}
+
+.retarget-compare.is-paused .retarget-play-state {
+  opacity: 1;
+}
+
+/* ---------- results ---------- */
+
+.results-copy-label {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.results-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.results-tab {
+  padding: 8px 18px;
+  font-size: 0.87rem;
+}
+
+.results-tab-tag {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--pink-soft);
+  color: var(--pink-ink);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+/* a translucent white pill only reached 3.4:1 under its own label */
+.results-tab.active .results-tab-tag {
+  background: var(--blue-deep);
+  color: #fff;
+}
+
+.results-carousel-stage {
+  --from: 22px;
+  position: relative;
+}
+
+/* JS sets panel.hidden = false on every panel and switches purely by class,
+   so [hidden] must NOT collapse these and inactive panels stack absolutely.
+   The outgoing table dissolves in place; only the incoming one is animated,
+   sliding from whichever side you are travelling towards (--from, set by JS). */
+.results-panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.24s ease, visibility 0s linear 0.24s;
+}
+
+.results-panel.active {
+  position: relative;
+  z-index: 2;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.24s ease, visibility 0s;
+  animation: results-panel-in 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes results-panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(var(--from));
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.results-panel[hidden] {
+  display: block;
+}
+
+.results-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.results-table {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.results-table th,
+.results-table td {
+  padding: 11px 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.results-table th {
+  background: var(--panel-2);
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.results-table td {
+  font-variant-numeric: tabular-nums;
+}
+
+.results-table th:first-child,
+.results-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  padding-left: 18px;
+  border-right: 1px solid var(--line);
+  background: var(--panel);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.results-table thead th:first-child {
+  z-index: 2;
+  background: var(--panel-2);
+}
+
+.method-row.competitor td:first-child {
+  background: var(--blue-soft);
+}
+
+.method-row.highlight td:first-child {
+  background: var(--pink-soft);
+}
+
+.results-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.method-row.competitor {
+  background: var(--blue-soft);
+}
+
+.method-row.competitor td:first-child {
+  color: var(--blue-deep);
+  font-weight: 700;
+  background: var(--blue-soft);
+}
+
+.method-row.highlight {
+  background: var(--pink-soft);
+}
+
+.method-row.highlight td {
+  font-weight: 700;
+}
+
+.method-row.highlight td:first-child {
+  box-shadow: inset 4px 0 0 var(--pink);
+  color: var(--pink-ink);
+  background: var(--pink-soft);
+}
+
+.table-note {
+  margin: 14px auto 0;
+  max-width: 780px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+/* ---------- footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--panel);
+  padding: 30px 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer-brand {
+  font-weight: 800;
+}
+
+.footer-sub {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+.footer-links {
+  display: flex;
+  gap: 22px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.footer-links a:hover {
+  color: var(--blue);
+}
+
+/* ---------- reveal on scroll ---------- */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms);
+}
+
+.js .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- responsive ---------- */
+
+/* The example rail stays a left column for as long as it fits: at 1080px there
+   is still room for 150px of rail beside the compare stage, and stacking it
+   above the stage reads as a separate row rather than a picker. */
+@media (max-width: 1180px) {
+  .retarget-layout {
+    grid-template-columns: 150px 1fr;
+    gap: 16px;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  .hero {
+    padding: 56px 0 52px;
+  }
+
+  .hero-hands {
+    display: none;
+  }
+
+  .site-nav {
+    gap: 16px;
+  }
+
+  .site-nav a {
+    font-size: 0.84rem;
+  }
+
+  .qualitative-grid-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-logos img {
+    height: 42px;
+  }
+
+  .hero-logos img.logo-wide {
+    height: 28px;
+  }
+}
+@media (max-width: 860px) {
+  .retarget-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .retarget-thumbrail {
+    display: grid;
+    flex: none;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    --header-h: 94px;
+  }
+
+  .header-inner {
+    flex-wrap: wrap;
+    row-gap: 10px;
+    padding: 11px 18px;
+  }
+
+  .site-nav {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  .site-nav a.active::after {
+    bottom: -4px;
+  }
+
+  .container {
+    padding: 0 18px;
+  }
+
+  .hero-stats {
+    gap: 14px 26px;
+  }
+
+  .hero-stats b {
+    font-size: 1.35rem;
+  }
+
+  .hero-logos {
+    gap: 20px;
+  }
+
+  .abstract-copy p {
+    text-align: left;
+  }
+
+  .retarget-thumbrail {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 380px) {
+  /* five links no longer fit on one row; wrap rather than scroll off-screen */
+  .site-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 6px;
+    overflow-x: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js .reveal,
+  .js .reveal.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
