@@ -631,4 +631,45 @@ if (resultsCarousel) {
   }
 }
 
+const citationCopy = document.querySelector('[data-citation-copy]');
+if (citationCopy) {
+  const citationText = document.querySelector('[data-citation-text]');
+
+  async function copyCitation(text) {
+    // navigator.clipboard needs a secure context; the page is served over
+    // HTTPS, but a local file:// preview is not, so keep the old path around.
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {}
+    }
+    const scratch = document.createElement('textarea');
+    scratch.value = text;
+    scratch.setAttribute('readonly', '');
+    scratch.style.position = 'fixed';
+    scratch.style.opacity = '0';
+    document.body.appendChild(scratch);
+    scratch.select();
+    let ok = false;
+    try {
+      ok = document.execCommand('copy');
+    } catch {}
+    scratch.remove();
+    return ok;
+  }
+
+  let citationResetTimer = null;
+  citationCopy.addEventListener('click', async () => {
+    const ok = await copyCitation(citationText?.textContent ?? '');
+    citationCopy.textContent = ok ? 'Copied' : 'Press Ctrl+C';
+    citationCopy.classList.toggle('is-copied', ok);
+    window.clearTimeout(citationResetTimer);
+    citationResetTimer = window.setTimeout(() => {
+      citationCopy.textContent = 'Copy';
+      citationCopy.classList.remove('is-copied');
+    }, 1800);
+  });
+}
+
 updateScrollProgress();

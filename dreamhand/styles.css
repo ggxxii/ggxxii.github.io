@@ -1266,6 +1266,65 @@ section[id] {
   color: var(--blue);
 }
 
+/* ---------- citation ---------- */
+
+.citation-card {
+  max-width: 880px;
+  margin: 0 auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.citation-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel-2);
+}
+
+.citation-label {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.citation-copy {
+  padding: 5px 13px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+
+.citation-copy:hover,
+.citation-copy.is-copied {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* The longest BibTeX line is far wider than the card, so it scrolls inside the
+   card rather than pushing the page sideways. */
+.citation-card pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.75;
+}
+
 /* ---------- reveal on scroll ---------- */
 
 .js .reveal {
