@@ -6,23 +6,23 @@
     <meta name="theme-color" content="#fdfaff" />
     <meta
       name="description"
-      content="DreamHand repurposes video diffusion models for occlusion-robust egocentric 3D hand motion recovery."
+      content="ACE-Ego-Hand repurposes video diffusion models for occlusion-robust egocentric 3D hand motion recovery."
     />
-    <title>DreamHand · Occlusion-Robust Egocentric 3D Hand Motion Recovery</title>
-    <link rel="canonical" href="https://ggxxii.github.io/dreamhand/" />
+    <title>ACE-Ego-Hand · Occlusion-Robust Egocentric 3D Hand Motion Recovery</title>
+    <link rel="canonical" href="https://ggxxii.github.io/ace-ego-hand/" />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3ClinearGradient id=%27g%27 x1=%270%27 y1=%270%27 x2=%271%27 y2=%271%27%3E%3Cstop offset=%270%27 stop-color=%27%23f2609a%27/%3E%3Cstop offset=%271%27 stop-color=%27%232f5ce8%27/%3E%3C/linearGradient%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2714%27 fill=%27url(%23g)%27/%3E%3C/svg%3E"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ggxxii.github.io/dreamhand/" />
-    <meta property="og:title" content="DreamHand: Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recovery" />
+    <meta property="og:url" content="https://ggxxii.github.io/ace-ego-hand/" />
+    <meta property="og:title" content="ACE-Ego-Hand: Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recovery" />
     <meta property="og:description" content="An offline clip-level framework that turns a video diffusion model into a deterministic geometry encoder, recovering bimanual 3D hand motion through occlusion and out-of-sight gaps." />
-    <meta property="og:image" content="https://ggxxii.github.io/dreamhand/assets/teaser-crop.png" />
+    <meta property="og:image" content="https://ggxxii.github.io/ace-ego-hand/assets/teaser-crop.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="DreamHand: Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recovery" />
+    <meta name="twitter:title" content="ACE-Ego-Hand: Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recovery" />
     <meta name="twitter:description" content="An offline clip-level framework that turns a video diffusion model into a deterministic geometry encoder, recovering bimanual 3D hand motion through occlusion and out-of-sight gaps." />
-    <meta name="twitter:image" content="https://ggxxii.github.io/dreamhand/assets/teaser-crop.png" />
+    <meta name="twitter:image" content="https://ggxxii.github.io/ace-ego-hand/assets/teaser-crop.png" />
     <link rel="stylesheet" href="styles.css?v=20260816-01" />
   </head>
   <body>
@@ -31,9 +31,9 @@
 
     <header class="site-header" id="top">
       <div class="header-inner">
-        <a class="brand" href="#top" aria-label="DreamHand home">
+        <a class="brand" href="#top" aria-label="ACE-Ego-Hand home">
           <span class="brand-dot" aria-hidden="true"></span>
-          <span class="brand-copy"><strong class="grad">DreamHand</strong></span>
+          <span class="brand-copy"><strong class="grad">ACE-Ego-Hand</strong></span>
         </a>
         <nav class="site-nav" aria-label="Page navigation">
           <a href="#overview">Overview</a>
@@ -52,7 +52,7 @@
           <img class="hero-hand-robot" src="assets/robot-hand-blue.svg" alt="" />
         </div>
         <div class="container hero-inner">
-          <h1 class="grad">DreamHand</h1>
+          <h1 class="grad">ACE-Ego-Hand</h1>
           <p class="hero-sub">Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recovery</p>
           <p class="hero-authors"><a href="https://ggxxii.github.io/" target="_blank" rel="noopener">Yufei Liu</a><sup>1,4</sup>, Xixi Wang<sup>2</sup>, <a href="https://scholar.google.com/citations?view_op=list_works&amp;hl=zh-CN&amp;hl=zh-CN&amp;user=D-8csxoAAAAJ" target="_blank" rel="noopener">Hao Li</a><sup>3,4</sup>, <a href="https://scholar.google.com/citations?user=4l2zOz4AAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener">Ganlong Zhao</a><sup>3,4</sup>, Kaitong Cai<sup>4</sup>, Chengkai Jin<sup>2,4</sup>, Chunxiao Liu<sup>4</sup>, Jianbo Liu<sup>4</sup>, <a href="https://scholar.google.com/citations?user=QNkS4KEAAAAJ&amp;hl=en" target="_blank" rel="noopener">Siyuan Huang</a><sup>4 &dagger;</sup>, <a href="https://xingangpan.github.io/" target="_blank" rel="noopener">Xingang Pan</a><sup>2</sup>, <a href="https://scholar.google.com/citations?user=BN2Ze-QAAAAJ&amp;hl=en" target="_blank" rel="noopener">Hongsheng Li</a><sup>3,4 ✉</sup></p>
           <p class="hero-affiliations">
@@ -70,7 +70,7 @@
           </div>
           <div class="hero-cta">
             <a class="btn btn-primary" href="https://arxiv.org/abs/2608.20308" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>arXiv</a>
-            <a class="btn btn-ghost" href="https://github.com/ggxxii/dreamhand" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>Code</a>
+            <a class="btn btn-ghost" href="https://github.com/ggxxii/ACE-Ego-Hand" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>Code</a>
           </div>
           <div class="hero-stats">
             <div><b>30%</b><span>MPJPE-p cut · ARCTIC</span></div>
@@ -85,8 +85,8 @@
       <section class="section demo-section">
         <div class="container">
           <div class="video-card reveal" id="demo">
-            <video controls autoplay muted loop playsinline poster="assets/teaser-crop.png" aria-label="DreamHand demo video">
-              <source src="assets/dreamhand-demo.mp4" type="video/mp4" />
+            <video controls autoplay muted loop playsinline poster="assets/teaser-crop.png" aria-label="ACE-Ego-Hand demo video">
+              <source src="assets/ACE-Ego-Hand_demo.mp4" type="video/mp4" />
               Your browser does not support video playback. Download the demo to view it.
             </video>
           </div>
@@ -99,7 +99,7 @@
             <h2 id="abstract-title">Abstract</h2>
           </div>
           <div class="abstract-copy">
-            <p>Egocentric video offers scalable manipulation data for embodied AI, yet recovering metric 3D hand trajectories remains challenging due to severe object occlusion and frequent out-of-sight gaps. Existing single-frame and windowed temporal regressors fail when hand shortly leaves the frame, while recent video diffusion models (VDMs) rely on heavy, stochastic multi-step sampling as pixel-space renderers. We instead repurpose VDM into a deterministic geometry encoder. A single forward pass over the clean latent exposes scene content beyond current observations, including occluded and out-of-sight hands. We introduce <strong>DreamHand</strong>, an offline clip-level framework that extracts features via a Deterministic Clean-Latent Encoder and decodes them with a Bidirectional Spatiotemporal Decoder. DreamHand recovers continuous bimanual trajectories with metric placement and no external detector, while a Ray-Based Camera Solver supports a second configuration that needs no test-time camera intrinsics. Across five egocentric benchmarks, DreamHand sets a new state of the art, cutting MPJPE-p by 30% on occlusion-heavy ARCTIC and 40% on HOT3D. These gains reach 46%–61% once out-of-sight hands are included in the evaluation, offering a scalable path from everyday human video to robot manipulation data.</p>
+            <p>Egocentric video offers scalable manipulation data for embodied AI, yet recovering metric 3D hand trajectories remains challenging due to severe object occlusion and frequent out-of-sight gaps. Existing single-frame and windowed temporal regressors fail when hand shortly leaves the frame, while recent video diffusion models (VDMs) rely on heavy, stochastic multi-step sampling as pixel-space renderers. We instead repurpose VDM into a deterministic geometry encoder. A single forward pass over the clean latent exposes scene content beyond current observations, including occluded and out-of-sight hands. We introduce <strong>ACE-Ego-Hand</strong>, an offline clip-level framework that extracts features via a Deterministic Clean-Latent Encoder and decodes them with a Bidirectional Spatiotemporal Decoder. ACE-Ego-Hand recovers continuous bimanual trajectories with metric placement and no external detector, while a Ray-Based Camera Solver supports a second configuration that needs no test-time camera intrinsics. Across five egocentric benchmarks, ACE-Ego-Hand sets a new state of the art, cutting MPJPE-p by 30% on occlusion-heavy ARCTIC and 40% on HOT3D. These gains reach 46%–61% once out-of-sight hands are included in the evaluation, offering a scalable path from everyday human video to robot manipulation data.</p>
           </div>
         </div>
       </section>
@@ -110,8 +110,8 @@
             <h2 id="method-title">Method</h2>
           </div>
           <figure class="figure">
-            <img src="assets/method-crop.png" alt="DreamHand pipeline from the VAE and Wan DiT through the Ray Head and Bidirectional Decoder to 3D hand motion" />
-            <figcaption><strong>Overview of DreamHand.</strong> Raw video is encoded into latents by the Wan VAE and processed by the Wan DiT (σ=0). Block-15 features (grayed blocks skipped) branch to the Ray Head and Bidirectional Spatiotemporal Decoder. Camera intrinsics supervise the Ray Head during training. At test time they are discarded (K-free) or used only as the bearing source in the translation solve (standard).</figcaption>
+            <img src="assets/method-crop.png" alt="ACE-Ego-Hand pipeline from the VAE and Wan DiT through the Ray Head and Bidirectional Decoder to 3D hand motion" />
+            <figcaption><strong>Overview of ACE-Ego-Hand.</strong> Raw video is encoded into latents by the Wan VAE and processed by the Wan DiT (σ=0). Block-15 features (grayed blocks skipped) branch to the Ray Head and Bidirectional Spatiotemporal Decoder. Camera intrinsics supervise the Ray Head during training. At test time they are discarded (K-free) or used only as the bearing source in the translation solve (standard).</figcaption>
           </figure>
         </div>
       </section>
@@ -120,7 +120,7 @@
         <div class="container reveal">
           <div class="section-head">
             <h2 id="qualitative-title">Qualitative Results</h2>
-            <p>We present side-by-side qualitative comparisons across ARCTIC, HOT3D and OAKINK2 under a shared protocol, and on unscripted in-the-wild egocentric footage where no ground truth exists. DreamHand remains stable under strong interaction and partial occlusion, which makes the representation suitable for downstream retargeting and manipulation analysis.</p>
+            <p>We present side-by-side qualitative comparisons across ARCTIC, HOT3D and OAKINK2 under a shared protocol, and on unscripted in-the-wild egocentric footage where no ground truth exists. ACE-Ego-Hand remains stable under strong interaction and partial occlusion, which makes the representation suitable for downstream retargeting and manipulation analysis.</p>
           </div>
 
           <div class="qualitative-grid-shell">
@@ -190,7 +190,7 @@
               </div>
             </div>
             <div class="qualitative-thumb qualitative-thumb-ours" data-qualitative-method data-qualitative-folder="ours">
-              <span class="qualitative-thumb-label qualitative-thumb-label-ours">Ours (DreamHand)</span>
+              <span class="qualitative-thumb-label qualitative-thumb-label-ours">Ours (ACE-Ego-Hand)</span>
               <div class="qualitative-thumb-frame qualitative-frame-ours is-layered">
                 <video class="qualitative-thumb-video is-active" autoplay muted loop playsinline preload="auto">
                   <source src="assets/qualitative-grid/ours/arctic_box_use.mp4" type="video/mp4" />
@@ -488,7 +488,7 @@
         <div class="container reveal">
           <div class="section-head">
             <h2 id="retarget-title">Retarget to Dexterous Hand</h2>
-            <p>DreamHand learns a dual mapping between human and robot hands. This makes occlusion-robust retargeting practical for teleoperation, imitation learning, and dexterous deployment.</p>
+            <p>ACE-Ego-Hand learns a dual mapping between human and robot hands. This makes occlusion-robust retargeting practical for teleoperation, imitation learning, and dexterous deployment.</p>
           </div>
 
           <div class="retarget-layout">
@@ -640,7 +640,7 @@
         <div class="container reveal">
           <div class="section-head">
             <h2 id="results-title">Results</h2>
-            <p><span class="results-copy-label">Result analysis.</span> DreamHand stays ahead most clearly on occlusion-heavy and out-of-sight cases, suggesting that the clean-latent representation preserves hand state even when visual evidence is missing.</p>
+            <p><span class="results-copy-label">Result analysis.</span> ACE-Ego-Hand stays ahead most clearly on occlusion-heavy and out-of-sight cases, suggesting that the clean-latent representation preserves hand state even when visual evidence is missing.</p>
           </div>
 
           <div class="results-tabs" data-results-tabs role="group" aria-label="Benchmark datasets">
@@ -704,7 +704,7 @@
                                   <td>ViDiHand</td><td>0.997</td><td>0.999</td><td>0.999</td><td>21.668</td><td>9.821</td><td>31.045</td><td>12.407</td><td>14.642</td><td>0.047</td><td>3.183</td>
                                 </tr>
                                 <tr class="method-row highlight">
-                                  <td><strong>DreamHand</strong></td><td>1.000</td><td>1.000</td><td>1.000</td><td>15.256</td><td>7.474</td><td>16.783</td><td>9.180</td><td>11.807</td><td>0.021</td><td>2.700</td>
+                                  <td><strong>ACE-Ego-Hand</strong></td><td>1.000</td><td>1.000</td><td>1.000</td><td>15.256</td><td>7.474</td><td>16.783</td><td>9.180</td><td>11.807</td><td>0.021</td><td>2.700</td>
                                 </tr>
                                   </tbody>
                   </table>
@@ -762,7 +762,7 @@
                                   <td>ViDiHand</td><td>0.948</td><td>0.974</td><td>0.983</td><td>21.514</td><td>11.383</td><td>44.440</td><td>14.953</td><td>15.829</td><td>0.040</td><td>3.741</td>
                                 </tr>
                                 <tr class="method-row highlight">
-                                  <td><strong>DreamHand</strong></td><td>0.986</td><td>0.998</td><td>0.996</td><td>12.888</td><td>6.436</td><td>17.273</td><td>6.418</td><td>7.924</td><td>0.025</td><td>3.159</td>
+                                  <td><strong>ACE-Ego-Hand</strong></td><td>0.986</td><td>0.998</td><td>0.996</td><td>12.888</td><td>6.436</td><td>17.273</td><td>6.418</td><td>7.924</td><td>0.025</td><td>3.159</td>
                                 </tr>
                                   </tbody>
                   </table>
@@ -820,7 +820,7 @@
                                   <td>ViDiHand</td><td>0.984</td><td>0.991</td><td>0.990</td><td>30.090</td><td>13.960</td><td>--</td><td>24.460</td><td>23.420</td><td>0.117</td><td>4.010</td>
                                 </tr>
                                 <tr class="method-row highlight">
-                                  <td><strong>DreamHand</strong></td><td>0.958</td><td>0.996</td><td>0.974</td><td>23.031</td><td>11.664</td><td>--</td><td>14.987</td><td>18.426</td><td>0.057</td><td>2.393</td>
+                                  <td><strong>ACE-Ego-Hand</strong></td><td>0.958</td><td>0.996</td><td>0.974</td><td>23.031</td><td>11.664</td><td>--</td><td>14.987</td><td>18.426</td><td>0.057</td><td>2.393</td>
                                 </tr>
                                   </tbody>
                   </table>
@@ -878,7 +878,7 @@
                                   <td>ViDiHand</td><td>0.997</td><td>0.999</td><td>0.999</td><td>17.320</td><td>7.987</td><td>--</td><td>16.544</td><td>12.159</td><td>0.040</td><td>1.990</td>
                                 </tr>
                                 <tr class="method-row highlight">
-                                  <td><strong>DreamHand</strong></td><td>0.999</td><td>1.000</td><td>1.000</td><td>9.223</td><td>4.894</td><td>--</td><td>6.088</td><td>5.689</td><td>0.031</td><td>0.707</td>
+                                  <td><strong>ACE-Ego-Hand</strong></td><td>0.999</td><td>1.000</td><td>1.000</td><td>9.223</td><td>4.894</td><td>--</td><td>6.088</td><td>5.689</td><td>0.031</td><td>0.707</td>
                                 </tr>
                                   </tbody>
                   </table>
@@ -936,7 +936,7 @@
                                   <td>ViDiHand</td><td>0.813</td><td>0.886</td><td>0.937</td><td>38.996</td><td>22.827</td><td>56.047</td><td>101.568</td><td>38.119</td><td>0.103</td><td>3.728</td>
                                 </tr>
                                 <tr class="method-row highlight">
-                                  <td><strong>DreamHand</strong></td><td>0.977</td><td>0.985</td><td>0.993</td><td>8.988</td><td>5.887</td><td>8.272</td><td>11.129</td><td>7.222</td><td>0.018</td><td>1.089</td>
+                                  <td><strong>ACE-Ego-Hand</strong></td><td>0.977</td><td>0.985</td><td>0.993</td><td>8.988</td><td>5.887</td><td>8.272</td><td>11.129</td><td>7.222</td><td>0.018</td><td>1.089</td>
                                 </tr>
                                   </tbody>
                   </table>
@@ -958,8 +958,8 @@
               <span class="citation-label">BibTeX</span>
               <button class="citation-copy" type="button" data-citation-copy>Copy</button>
             </div>
-            <pre><code data-citation-text>@misc{liu2026dreamhandrepurposingvideodiffusion,
-      title={DreamHand: Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recovery},
+            <pre><code data-citation-text>@misc{liu2026aceegohand,
+      title={ACE-Ego-Hand: Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recovery},
       author={Yufei Liu and Xixi Wang and Hao Li and Ganlong Zhao and Kaitong Cai and Chengkai Jin and Chunxiao Liu and Jianbo Liu and Siyuan Huang and Xingang Pan and Hongsheng Li},
       year={2026},
       eprint={2608.20308},
@@ -975,12 +975,12 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <div>
-          <span class="footer-brand">DreamHand</span>
+          <span class="footer-brand">ACE-Ego-Hand</span>
           <span class="footer-sub">Occlusion-robust egocentric 3D hand motion recovery</span>
         </div>
         <div class="footer-links">
           <a href="https://arxiv.org/abs/2608.20308" target="_blank" rel="noopener">arXiv</a>
-          <a href="https://github.com/ggxxii/dreamhand" target="_blank" rel="noopener">Code</a>
+          <a href="https://github.com/ggxxii/ACE-Ego-Hand" target="_blank" rel="noopener">Code</a>
           <a href="#top">Back to top ↑</a>
         </div>
       </div>

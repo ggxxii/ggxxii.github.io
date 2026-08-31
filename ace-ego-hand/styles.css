@@ -1,5 +1,5 @@
 /* ============================================================
-   DreamHand project page
+   ACE-Ego-Hand project page
    Blue-pink, light, minimal. Token-driven, no external assets.
 
    Palette is a pastel pink -> lavender -> blue sky. Surfaces carry the
@@ -8,8 +8,8 @@
    Colour roles
      blue  -> interface: nav, links, focus rings, and every selected state
               (scene pills, dataset tabs, retarget thumbs)
-     pink  -> "ours": the headline result numbers, the DreamHand tile,
-              the DreamHand results row, the human-hand art
+     pink  -> "ours": the headline result numbers, the ACE-Ego-Hand tile,
+              the ACE-Ego-Hand results row, the human-hand art
      rose->violet->periwinkle gradient carries the wordmark; pink->blue
      carries the section rules and the compare divider
    ============================================================ */
@@ -1449,6 +1449,12 @@ section[id] {
 }
 
 @media (max-width: 380px) {
+  /* the hyphenated name breaks at its own hyphens at the clamp floor; step it
+     down so the title still reads as one word */
+  .hero h1 {
+    font-size: 2.35rem;
+  }
+
   /* five links no longer fit on one row; wrap rather than scroll off-screen */
   .site-nav {
     flex-wrap: wrap;
